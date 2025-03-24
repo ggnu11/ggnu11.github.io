@@ -2,7 +2,8 @@ url: https://github.com/ggnu11/ggnu11.github.io.git
 baseurl:
 
 # Site settings
-title: Awesome Title
+title: 최영훈 포트폴리오
+header_title: Choi Young Hun
 email: your-email@domain.com
 description: "Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description."
 
