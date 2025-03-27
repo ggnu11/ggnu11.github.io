@@ -1,3 +1,4 @@
+// Typed.js 기능
 document.addEventListener("DOMContentLoaded", function () {
   var typed = new Typed("#typed", {
     strings: [
@@ -10,3 +11,16 @@ document.addEventListener("DOMContentLoaded", function () {
     loop: true,
   });
 });
+
+// 이메일 복사 기능
+function copyEmail() {
+  const email = document.getElementById("email").textContent;
+  navigator.clipboard
+    .writeText(email)
+    .then(() => {
+      alert("이메일이 복사되었습니다");
+    })
+    .catch((err) => {
+      console.error("복사 실패: ", err);
+    });
+}
