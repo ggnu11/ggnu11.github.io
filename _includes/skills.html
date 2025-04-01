@@ -1,48 +1,181 @@
-<!-- Services Section -->
+<!-- Skills Section -->
 <section id="skills">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading">projects</h2>
-        <h3 class="section-subheading text-muted">
-          Lorem ipsum dolor sit amet consectetur.
-        </h3>
+        <h2 class="section-heading">기술 스택</h2>
       </div>
     </div>
     <div class="row text-center">
+      <!-- 핵심 기술 -->
       <div class="col-md-4">
-        <span class="fa-stack fa-4x">
+        <span class="fa-stack fa-4x skill-icon-wrapper">
           <i class="fa fa-circle fa-stack-2x text-primary"></i>
-          <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+          <i class="fab fa-react fa-stack-1x fa-inverse fa-spin-slow"></i>
         </span>
-        <h4 class="service-heading">E-Commerce</h4>
+        <h4 class="service-heading">React 생태계</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">React-Router</span>
+          <span class="skill-tag">React-Helmet</span>
+          <span class="skill-tag">React-Hook-Form</span>
+        </div>
         <p class="text-muted">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-          maxime quam architecto quo inventore harum ex magni, dicta impedit.
+          컴포넌트 기반 UI 라이브러리인 React와 함께, React-Router, Hook-Form 등
+          다양한 리액트 생태계의 라이브러리를 활용한 SPA 개발 경험을 보유하고
+          있습니다.
         </p>
       </div>
+
+      <!-- 상태 관리 및 스타일링 -->
       <div class="col-md-4">
-        <span class="fa-stack fa-4x">
+        <span class="fa-stack fa-4x skill-icon-wrapper">
           <i class="fa fa-circle fa-stack-2x text-primary"></i>
-          <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+          <i class="fas fa-code fa-stack-1x fa-inverse"></i>
         </span>
-        <h4 class="service-heading">Responsive Design</h4>
+        <h4 class="service-heading">상태 관리 & 스타일링</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">Recoil</span>
+          <span class="skill-tag">styled-components</span>
+          <span class="skill-tag">react-i18next</span>
+        </div>
         <p class="text-muted">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-          maxime quam architecto quo inventore harum ex magni, dicta impedit.
+          TypeScript의 정적 타입 시스템과 함께 Recoil을 활용한 상태 관리,
+          styled-components를 통한 컴포넌트 기반 스타일링, 다국어 지원을 위한
+          i18next 활용 경험이 있습니다.
         </p>
       </div>
+
+      <!-- 데이터 시각화 -->
       <div class="col-md-4">
-        <span class="fa-stack fa-4x">
+        <span class="fa-stack fa-4x skill-icon-wrapper">
           <i class="fa fa-circle fa-stack-2x text-primary"></i>
-          <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+          <i class="fas fa-chart-line fa-stack-1x fa-inverse"></i>
         </span>
-        <h4 class="service-heading">Web Security</h4>
+        <h4 class="service-heading">데이터 시각화</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Chart.js</span>
+          <span class="skill-tag">ECharts</span>
+          <span class="skill-tag">ReactFlow</span>
+          <span class="skill-tag">react-chartjs-2</span>
+        </div>
         <p class="text-muted">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-          maxime quam architecto quo inventore harum ex magni, dicta impedit.
+          Chart.js, ECharts 등 다양한 차트 라이브러리를 활용한 데이터 시각화
+          경험을 보유하고 있으며, ReactFlow를 통한 다이어그램 및 워크플로우
+          시각화에 능숙합니다.
         </p>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  /* 스킬 섹션 스타일 */
+  #skills {
+    background-color: #f8f9fa;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #skills::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" fill="none" stroke="%23eaeaea" stroke-width="1"/></svg>');
+    opacity: 0.4;
+    z-index: 0;
+  }
+
+  #skills .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 섹션 제목 스타일 */
+  #skills .section-heading {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  #skills .section-subheading {
+    margin-bottom: 50px;
+    font-size: 16px;
+  }
+
+  /* 아이콘 스타일 */
+  .skill-icon-wrapper {
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .col-md-4:hover .skill-icon-wrapper {
+    transform: scale(1.05);
+  }
+
+  .text-primary {
+    color: #fed136 !important;
+  }
+
+  /* 스킬 태그 스타일 */
+  .skill-tags {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .skill-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #fed136, #ff9d00);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 2px 5px rgba(254, 209, 54, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .skill-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(254, 209, 54, 0.4);
+  }
+
+  /* 서비스 제목 스타일 */
+  .service-heading {
+    font-size: 22px;
+    margin: 15px 0;
+    font-weight: 700;
+    color: #333;
+  }
+
+  /* 애니메이션 */
+  .fa-spin-slow {
+    animation: fa-spin 8s infinite linear;
+  }
+
+  /* 반응형 스타일 */
+  @media (max-width: 768px) {
+    #skills {
+      padding: 70px 0;
+    }
+
+    .skill-tags {
+      margin: 10px 0;
+    }
+  }
+</style>
+
+<!-- Font Awesome 5 추가 -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
