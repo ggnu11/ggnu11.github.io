@@ -1,15 +1,21 @@
 ---
-title: Dreams
-subtitle: Website Design
+title: NoteSnap
+subtitle: 텍스트 파일 요약 웹 애플리케이션
 layout: default
 modal-id: 1
-date: 2014-07-18
-img: dreams.png
-thumbnail: dreams-thumbnail.png
-alt: image-alt
-project-date: April 2014
-client: Start Bootstrap
-category: Web Development
-description: Lorem ipsum dolor sit amet, usu cu alterum nominavi lobortis. At duo novum diceret. Tantas apeirian vix et, usu sanctus postulant inciderint ut, populo diceret necessitatibus in vim. Cu eum dicam feugiat noluisse.
+date: 2025-04-30
+img: notesnap.png
+thumbnail: notesnap.png
+alt: NoteSnap 웹 앱 화면
+project-date: 2025년 4월
+client: 개인 프로젝트
+category: 웹 애플리케이션
+description: NoteSnap은 사용자가 텍스트 파일을 업로드하면 주요 문장을 추출하여 요약 결과를 보여주는 웹 애플리케이션입니다. GPT나 외부 AI API 없이 브라우저 내에서 요약 알고리즘이 작동하며, 깔끔하고 직관적인 UI로 구현되었습니다. 정적 파일로 빌드된 프로젝트는 Firebase Hosting에 배포되며, GitHub Actions를 통한 자동 배포 파이프라인을 구축했습니다.
 
+주요 기술 스택:
+  - React + TypeScript
+  - Tailwind CSS + shadcn/ui
+  - Vite
+  - Firebase Hosting
+  - GitHub Actions (CI/CD)
 ---
