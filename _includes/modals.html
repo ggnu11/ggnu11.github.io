@@ -25,7 +25,7 @@
                                     <h4>기술 스택</h4>
                                     <div class="tech-badges">
                                         {% for tech in post.tech-stack %}
-                                        <span class="tech-badge">{{ tech }}</span>
+                                        <span class="tech-badge" data-tech="{{ tech }}">{{ tech }}</span>
                                         {% endfor %}
                                     </div>
                                 </div>

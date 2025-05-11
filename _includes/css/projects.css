@@ -65,18 +65,44 @@
 .tech-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 25px;
 }
 
 .tech-badge {
     display: inline-block;
-    padding: 6px 12px;
-    background-color: #{{ site.data.template.color.secondary }};
-    color: white;
-    border-radius: 20px;
+    padding: 8px 14px;
+    border-radius: 25px;
     font-size: 14px;
     font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    color: white;
+}
+
+/* 기술 스택별 색상 지정 */
+.tech-badge[data-tech="React"] { background-color: #61dafb; color: #282c34; }
+.tech-badge[data-tech="TypeScript"] { background-color: #3178c6; }
+.tech-badge[data-tech="JavaScript"] { background-color: #f7df1e; color: #333; }
+.tech-badge[data-tech="Tailwind CSS"] { background-color: #06b6d4; }
+.tech-badge[data-tech="CSS3"] { background-color: #264de4; }
+.tech-badge[data-tech="HTML5"] { background-color: #e34f26; }
+.tech-badge[data-tech="Firebase"] { background-color: #ffca28; color: #333; }
+.tech-badge[data-tech="Vite"] { background-color: #646cff; }
+.tech-badge[data-tech="Bootstrap"] { background-color: #7952b3; }
+.tech-badge[data-tech="jQuery"] { background-color: #0769ad; }
+.tech-badge[data-tech="GitHub Actions"] { background-color: #2088FF; }
+.tech-badge[data-tech="Responsive Design"] { background-color: #5851db; }
+.tech-badge[data-tech="shadcn/ui"] { background-color: #000000; }
+
+/* 기본 색상 (특정 기술이 위에 지정되지 않은 경우) */
+.tech-badge:not([data-tech]) {
+    background-color: #{{ site.data.template.color.secondary }};
+}
+
+.tech-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .list-inline.item-details {
