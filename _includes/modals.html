@@ -1,4 +1,4 @@
- <!-- Portfolio Modals -->
+<!-- Portfolio Modals -->
  {% for post in site.posts %}
     <div class="portfolio-modal modal fade" id="portfolioModal{{ post.modal-id }}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
@@ -15,19 +15,42 @@
                             <h2>{{ post.title }}</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
-                            <p>{{ post.description }}</p>
+                            
+                            <!-- Improved description section with better formatting -->
+                            <div class="project-description">
+                                {{ post.description | markdownify }}
+                                
+                                {% if post.tech-stack %}
+                                <div class="tech-stack-section">
+                                    <h4>기술 스택</h4>
+                                    <div class="tech-badges">
+                                        {% for tech in post.tech-stack %}
+                                        <span class="tech-badge">{{ tech }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            
                             <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">{{ post.client }}</a>
-                                    </strong>
+                                {% if post.project-url %}
+                                <li>사이트:
+                                    <strong><a href="{{ post.project-url }}" target="_blank">{{ post.title }} 방문하기</a></strong>
                                 </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">{{ post.project-date }}</a>
-                                    </strong>
+                                {% endif %}
+                                
+                                {% if post.github-url %}
+                                <li>GitHub:
+                                    <strong><a href="{{ post.github-url }}" target="_blank">소스 코드</a></strong>
                                 </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">{{ post.category }}</a>
-                                    </strong>
+                                {% endif %}
+                                
+                                <li>완료일:
+                                    <strong>{{ post.project-date }}</strong>
+                                </li>
+                                
+                                <li>분류:
+                                    <strong>{{ post.category }}</strong>
                                 </li>
                             </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>

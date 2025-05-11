@@ -8,14 +8,16 @@ img: notesnap.png
 thumbnail: notesnap.png
 alt: NoteSnap 웹 앱 화면
 project-date: 2025년 4월
-client: 개인 프로젝트
 category: 웹 애플리케이션
+project-url: https://notesnap-6966c.web.app
+github-url: https://github.com/ggnu11/notesnap
 description: NoteSnap은 사용자가 텍스트 파일을 업로드하면 주요 문장을 추출하여 요약 결과를 보여주는 웹 애플리케이션입니다. GPT나 외부 AI API 없이 브라우저 내에서 요약 알고리즘이 작동하며, 깔끔하고 직관적인 UI로 구현되었습니다. 정적 파일로 빌드된 프로젝트는 Firebase Hosting에 배포되며, GitHub Actions를 통한 자동 배포 파이프라인을 구축했습니다.
-
-주요 기술 스택:
-  - React + TypeScript
-  - Tailwind CSS + shadcn/ui
+tech-stack:
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - shadcn/ui
   - Vite
-  - Firebase Hosting
-  - GitHub Actions (CI/CD)
+  - Firebase
+  - GitHub Actions
 ---

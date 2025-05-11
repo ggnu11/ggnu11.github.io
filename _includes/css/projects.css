@@ -38,3 +38,62 @@
     height: 100%;
   }
 }
+
+.project-description {
+    margin: 25px 0;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.project-description p {
+    margin-bottom: 15px;
+}
+
+.tech-stack-section {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.tech-stack-section h4 {
+    margin-bottom: 15px;
+    color: #{{ site.data.template.color.primary }};
+    font-weight: 600;
+}
+
+.tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tech-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #{{ site.data.template.color.secondary }};
+    color: white;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.list-inline.item-details {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.list-inline.item-details li {
+    margin-bottom: 10px;
+}
+
+.list-inline.item-details li strong a {
+    color: #{{ site.data.template.color.primary }};
+}
+
+.list-inline.item-details li strong a:hover {
+    color: #{{ site.data.template.color.secondary }};
+    text-decoration: none;
+}
