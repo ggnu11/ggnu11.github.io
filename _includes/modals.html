@@ -23,9 +23,9 @@
                                 {% if post.tech-stack %}
                                 <div class="tech-stack-section">
                                     <h4>기술 스택</h4>
-                                    <div class="tech-badges">
+                                    <div class="modern-tech-stack">
                                         {% for tech in post.tech-stack %}
-                                        <span class="tech-badge" data-tech="{{ tech }}">{{ tech }}</span>
+                                        <a href="#" class="tech-badge" data-tech="{{ tech | downcase }}" onclick="openTechSite('{{ tech | downcase }}'); return false;">{{ tech }}</a>
                                         {% endfor %}
                                     </div>
                                 </div>

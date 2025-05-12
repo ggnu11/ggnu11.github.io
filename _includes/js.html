@@ -1,4 +1,4 @@
- <!-- jQuery Version 1.11.0 -->
+<!-- jQuery Version 1.11.0 -->
     <script src="{{ "/js/jquery-1.11.0.js" | prepend: site.baseurl }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -15,3 +15,86 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ "/js/agency.js" | prepend: site.baseurl }}"></script>
+    
+    <!-- Tech Stack Links Script -->
+    <script>
+        function openTechSite(tech) {
+            // 기술 스택별 공식 사이트 URL 매핑
+            const techSites = {
+                'javascript': 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+                'js': 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+                'typescript': 'https://www.typescriptlang.org/',
+                'ts': 'https://www.typescriptlang.org/',
+                'react': 'https://reactjs.org/',
+                'vue': 'https://vuejs.org/',
+                'angular': 'https://angular.io/',
+                'python': 'https://www.python.org/',
+                'java': 'https://www.java.com/',
+                'html': 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+                'html5': 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+                'css': 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+                'css3': 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+                'sass': 'https://sass-lang.com/',
+                'scss': 'https://sass-lang.com/',
+                'nodejs': 'https://nodejs.org/',
+                'node': 'https://nodejs.org/',
+                'express': 'https://expressjs.com/',
+                'mongodb': 'https://www.mongodb.com/',
+                'mysql': 'https://www.mysql.com/',
+                'postgresql': 'https://www.postgresql.org/',
+                'postgres': 'https://www.postgresql.org/',
+                'firebase': 'https://firebase.google.com/',
+                'aws': 'https://aws.amazon.com/',
+                'docker': 'https://www.docker.com/',
+                'kubernetes': 'https://kubernetes.io/',
+                'k8s': 'https://kubernetes.io/',
+                'git': 'https://git-scm.com/',
+                'github': 'https://github.com/',
+                'wordpress': 'https://wordpress.org/',
+                'php': 'https://www.php.net/',
+                'laravel': 'https://laravel.com/',
+                'flutter': 'https://flutter.dev/',
+                'swift': 'https://developer.apple.com/swift/',
+                'kotlin': 'https://kotlinlang.org/',
+                'redux': 'https://redux.js.org/',
+                'graphql': 'https://graphql.org/',
+                'next': 'https://nextjs.org/',
+                'nextjs': 'https://nextjs.org/',
+                'gatsby': 'https://www.gatsbyjs.com/',
+                'django': 'https://www.djangoproject.com/',
+                'spring': 'https://spring.io/',
+                'spring boot': 'https://spring.io/projects/spring-boot',
+                'flask': 'https://flask.palletsprojects.com/',
+                'ruby': 'https://www.ruby-lang.org/',
+                'rails': 'https://rubyonrails.org/',
+                'go': 'https://golang.org/',
+                'golang': 'https://golang.org/',
+                'rust': 'https://www.rust-lang.org/',
+                'c++': 'https://isocpp.org/',
+                'c#': 'https://docs.microsoft.com/en-us/dotnet/csharp/',
+                'csharp': 'https://docs.microsoft.com/en-us/dotnet/csharp/',
+                'dotnet': 'https://dotnet.microsoft.com/',
+                '.net': 'https://dotnet.microsoft.com/',
+                'tailwind': 'https://tailwindcss.com/',
+                'tailwindcss': 'https://tailwindcss.com/',
+                'bootstrap': 'https://getbootstrap.com/',
+                'jquery': 'https://jquery.com/',
+                'webpack': 'https://webpack.js.org/',
+                'vite': 'https://vitejs.dev/',
+                'ember': 'https://emberjs.com/',
+                'svelte': 'https://svelte.dev/',
+                'nuxt': 'https://nuxtjs.org/',
+                'nuxtjs': 'https://nuxtjs.org/',
+                'deno': 'https://deno.land/',
+                'electron': 'https://www.electronjs.org/'
+            };
+            
+            // 기술 스택에 맞는 URL이 있으면 새 창에서 열기
+            if (techSites[tech]) {
+                window.open(techSites[tech], '_blank');
+            } else {
+                // 매핑된 URL이 없는 경우 Google 검색 결과로 이동
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(tech + ' official website')}`, '_blank');
+            }
+        }
+    </script>

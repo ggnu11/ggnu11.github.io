@@ -306,3 +306,6 @@
     color: #{{ site.data.template.color.secondary }};
     text-decoration: none;
 }
+.portfolio-modal .modal-content {
+  padding: 0;
+}

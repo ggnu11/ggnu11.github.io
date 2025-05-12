@@ -1,3 +1,224 @@
 ---
 layout: style
 ---
+
+/* 기술 스택 스타일 */
+.tech-stack-section {
+  margin: 25px 0;
+}
+
+.tech-stack-section h4 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.modern-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.tech-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  background: #2c3e50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.tech-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  color: white;
+}
+
+/* 기술 스택별 실제 브랜드 색상 적용 */
+.tech-badge[data-tech="react"] {
+  background: #61dafb;
+  color: #000000;
+}
+
+.tech-badge[data-tech="vue"] {
+  background: #42b883;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="angular"] {
+  background: #dd0031;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="javascript"],
+.tech-badge[data-tech="js"] {
+  background: #f7df1e;
+  color: #000000;
+}
+
+.tech-badge[data-tech="typescript"],
+.tech-badge[data-tech="ts"] {
+  background: #3178c6;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="python"] {
+  background: #3776ab;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="java"] {
+  background: #007396;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="html"],
+.tech-badge[data-tech="html5"] {
+  background: #e34f26;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="css"],
+.tech-badge[data-tech="css3"] {
+  background: #1572b6;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="sass"],
+.tech-badge[data-tech="scss"] {
+  background: #cc6699;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="nodejs"],
+.tech-badge[data-tech="node"] {
+  background: #339933;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="express"] {
+  background: #000000;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="mongodb"] {
+  background: #47a248;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="mysql"] {
+  background: #4479a1;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="postgresql"],
+.tech-badge[data-tech="postgres"] {
+  background: #336791;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="firebase"] {
+  background: #ffca28;
+  color: #000000;
+}
+
+.tech-badge[data-tech="aws"] {
+  background: #232f3e;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="docker"] {
+  background: #2496ed;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="kubernetes"],
+.tech-badge[data-tech="k8s"] {
+  background: #326ce5;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="git"] {
+  background: #f05032;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="github"] {
+  background: #181717;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="wordpress"] {
+  background: #21759b;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="php"] {
+  background: #777bb4;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="laravel"] {
+  background: #ff2d20;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="flutter"] {
+  background: #02569b;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="swift"] {
+  background: #fa7343;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="kotlin"] {
+  background: #7f52ff;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="redux"] {
+  background: #764abc;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="graphql"] {
+  background: #e10098;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="next"],
+.tech-badge[data-tech="nextjs"] {
+  background: #000000;
+  color: #ffffff;
+}
+
+.tech-badge[data-tech="gatsby"] {
+  background: #663399;
+  color: #ffffff;
+}
+
+/* 프로젝트 설명 스타일 개선 */
+.project-description {
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+/* 모바일 반응형 스타일 */
+@media (max-width: 767px) {
+  .modern-tech-stack {
+    gap: 8px;
+  }
+
+  .tech-badge {
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+}
