@@ -222,3 +222,186 @@ layout: style
     font-size: 13px;
   }
 }
+
+/* Contact Section 포트폴리오 스타일 개선 */
+#contact {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+}
+
+#contact .section-heading {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+#contact .section-subheading {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+}
+
+#contact .form-control {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 15px 20px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  color: #2c3e50;
+}
+
+#contact .form-control:focus {
+  background: white;
+  border-color: #fed136;
+  box-shadow: 0 0 0 0.2rem rgba(254, 209, 54, 0.25);
+}
+
+#contact .form-control::placeholder {
+  color: #7f8c8d;
+}
+
+#contact textarea.form-control {
+  min-height: 150px;
+  resize: vertical;
+}
+
+#contact .btn-xl {
+  background: linear-gradient(135deg, #fed136 0%, #f39c12 100%);
+  border: none;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(254, 209, 54, 0.3);
+}
+
+#contact .btn-xl:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(254, 209, 54, 0.4);
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+}
+
+#contact .btn-xl:disabled {
+  opacity: 0.7;
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* Contact Info 스타일 개선 */
+.contact-info div {
+  background: rgba(254, 209, 54, 0.1) !important;
+  border: 2px solid rgba(254, 209, 54, 0.3) !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.contact-info div:hover {
+  background: rgba(254, 209, 54, 0.15) !important;
+  border-color: rgba(254, 209, 54, 0.5) !important;
+  transform: translateY(-5px);
+}
+
+.contact-info i {
+  color: #fed136 !important;
+  font-size: 2.5rem !important;
+  margin-bottom: 20px !important;
+  transition: transform 0.3s ease;
+}
+
+.contact-info div:hover i {
+  transform: scale(1.1);
+}
+
+.contact-info h4 {
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 1.3rem !important;
+  margin-bottom: 15px !important;
+}
+
+.contact-info p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 1.1rem !important;
+  font-weight: 500 !important;
+}
+
+/* Success/Error 메시지 스타일 */
+#contact .alert {
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+#contact .alert-success {
+  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+  color: white;
+}
+
+#contact .alert-danger {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  color: white;
+}
+
+/* Form group 스타일 개선 */
+#contact .form-group {
+  margin-bottom: 25px;
+}
+
+#contact .help-block {
+  color: #fed136;
+  font-weight: 500;
+  margin-top: 8px;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  #contact {
+    padding: 60px 0;
+  }
+  
+  #contact .section-heading {
+    font-size: 2rem;
+  }
+  
+  #contact .section-subheading {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+  
+  #contact .btn-xl {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+  
+  .contact-info div {
+    margin: 10px !important;
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  #contact .form-control {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+  
+  #contact .btn-xl {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+  
+  .contact-info h4 {
+    font-size: 1.1rem !important;
+  }
+  
+  .contact-info p {
+    font-size: 1rem !important;
+  }
+}
