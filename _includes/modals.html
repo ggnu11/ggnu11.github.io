@@ -1,63 +1,97 @@
 <!-- Portfolio Modals -->
- {% for post in site.posts %}
-    <div class="portfolio-modal modal fade" id="portfolioModal{{ post.modal-id }}" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>{{ post.title }}</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
-                            
-                            <!-- Improved description section with better formatting -->
-                            <div class="project-description">
-                                {{ post.description | markdownify }}
-                                
-                                {% if post.tech-stack %}
-                                <div class="tech-stack-section">
-                                    <h4>기술 스택</h4>
-                                    <div class="modern-tech-stack">
-                                        {% for tech in post.tech-stack %}
-                                        <a href="#" class="tech-badge" data-tech="{{ tech | downcase }}" onclick="openTechSite('{{ tech | downcase }}'); return false;">{{ tech }}</a>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                {% endif %}
-                            </div>
-                            
-                            <ul class="list-inline item-details">
-                                {% if post.project-url %}
-                                <li>사이트:
-                                    <strong><a href="{{ post.project-url }}" target="_blank">{{ post.title }} 방문하기</a></strong>
-                                </li>
-                                {% endif %}
-                                
-                                {% if post.github-url %}
-                                <li>GitHub:
-                                    <strong><a href="{{ post.github-url }}" target="_blank">소스 코드</a></strong>
-                                </li>
-                                {% endif %}
-                                
-                                <li>완료일:
-                                    <strong>{{ post.project-date }}</strong>
-                                </li>
-                                
-                                <li>분류:
-                                    <strong>{{ post.category }}</strong>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+{% for post in site.posts %}
+<div
+  class="portfolio-modal modal fade"
+  id="portfolioModal{{ post.modal-id }}"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-content">
+    <div class="close-modal" data-dismiss="modal">
+      <div class="lr">
+        <div class="rl"></div>
+      </div>
     </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="modal-body">
+            <h2>{{ post.title }}</h2>
+            <hr class="star-primary" />
+            <img
+              src="img/portfolio/{{ post.img }}"
+              class="img-responsive img-centered"
+              alt="{{ post.alt }}"
+            />
+
+            <!-- Improved description section with better formatting -->
+            <div class="project-description">
+              {{ post.description | markdownify }} {% if post.tech-stack %}
+              <div class="tech-stack-section">
+                <h4>기술 스택</h4>
+                <div class="modern-tech-stack">
+                  {% for tech in post.tech-stack %}
+                  <a
+                    href="#"
+                    class="tech-badge"
+                    data-tech="{{ tech | downcase }}"
+                    onclick="openTechSite('{{ tech | downcase }}'); return false;"
+                    >{{ tech }}</a
+                  >
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %} {% if post.deployment-services %}
+              <div class="deployment-section">
+                <h4>배포 서비스</h4>
+                <div class="deployment-services">
+                  {% for service in post.deployment-services %}
+                  <div class="deployment-item">{{ service }}</div>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endif %}
+            </div>
+
+            <ul class="list-inline item-details">
+              {% if post.project-url %}
+              <li>
+                사이트:
+                <strong
+                  ><a href="{{ post.project-url }}" target="_blank"
+                    >{{ post.title }} 방문하기</a
+                  ></strong
+                >
+              </li>
+              {% endif %} {% if post.github-url %}
+              <li>
+                GitHub:
+                <strong
+                  ><a href="{{ post.github-url }}" target="_blank"
+                    >소스 코드</a
+                  ></strong
+                >
+              </li>
+              {% endif %}
+
+              <li>
+                완료일:
+                <strong>{{ post.project-date }}</strong>
+              </li>
+
+              <li>
+                분류:
+                <strong>{{ post.category }}</strong>
+              </li>
+            </ul>
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              <i class="fa fa-times"></i> Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endfor %}

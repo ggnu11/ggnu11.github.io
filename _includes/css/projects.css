@@ -309,3 +309,75 @@
 .portfolio-modal .modal-content {
   padding: 0;
 }
+
+/* 배포 서비스 섹션 스타일 */
+.deployment-section {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.deployment-section h4 {
+    margin-bottom: 15px;
+    color: #{{ site.data.template.color.primary }};
+    font-weight: 600;
+}
+
+.deployment-services {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-start;
+}
+
+.deployment-item {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 3px 8px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.deployment-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* 기술 스택 그리드 레이아웃 개선 */
+.modern-tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.modern-tech-stack .tech-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+    box-shadow: 0 3px 8px rgba(240, 147, 251, 0.3);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    min-height: 35px;
+}
+
+.modern-tech-stack .tech-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(240, 147, 251, 0.4);
+    color: white;
+    text-decoration: none;
+}
