@@ -1,44 +1,30 @@
-<!-- Team Section -->
+<!-- GitHub Contributions Section -->
 <section id="experience" class="bg-light-gray">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Our Amazing Team</h2>
+        <h2 class="section-heading">GitHub 기여도</h2>
         <h3 class="section-subheading text-muted">
-          Lorem ipsum dolor sit amet consectetur.
+          개발 활동 현황을 한눈에 확인해보세요.
         </h3>
       </div>
     </div>
     <div class="row">
-      {% for member in site.people %}
-      <div class="col-sm-4">
-        <div class="team-member">
+      <div class="col-lg-10 col-lg-offset-1 text-center">
+        <div class="github-chart">
           <img
-            src="img/team/{{ member.pic }}.jpg"
-            class="img-responsive img-circle"
-            alt=""
+            src="https://ghchart.rshah.org/219138/ggnu11"
+            alt="GitHub 기여도 차트"
+            class="img-responsive github-contributions"
           />
-          <h4>{{ member.name }}</h4>
-          <p class="text-muted">{{ member.position }}</p>
-          <ul class="list-inline social-buttons">
-            {% for network in member.social %}
-            <li>
-              <a href="{{ network.url }}">
-                <i class="fa fa-{{ network.title }}"></i>
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
         </div>
       </div>
-      {% endfor %}
     </div>
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 text-center">
         <p class="large text-muted">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque,
-          laboriosam veritatis, quos non quis ad perspiciatis, totam corporis
-          ea, alias ut unde.
+          지속적인 학습과 개발을 통해 꾸준히 성장하고 있습니다. GitHub에서 더
+          많은 프로젝트를 확인해보세요.
         </p>
       </div>
     </div>
