@@ -3,4 +3,5 @@
 {% include css/about.css %}
 {% include css/skills.css %}
 {% include css/projects.css %}
+{% include css/experience.css %}
 {{ content }}

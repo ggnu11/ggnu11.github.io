@@ -8,10 +8,26 @@ body {
     overflow-x: hidden;
     font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #{{ site.data.template.color.secondary-dark }};
+    background-color: #1a202c;
+}
+
+/* Fixed 탭 네비게이션을 위한 섹션 스크롤 마진 */
+section[id] {
+    scroll-margin-top: 80px;
+}
+
+/* 첫 번째 섹션이 Fixed Nav에 가려지지 않도록 상단 여백 추가 */
+#skills {
+    padding-top: 80px;
+}
+
+/* html에 부드러운 스크롤 적용 */
+html {
+    scroll-behavior: smooth;
 }
 
 .text-muted {
-    color: #{{ site.data.template.color.muted }};
+    color: #d1d5db;
 }
 
 .text-primary {
@@ -62,7 +78,7 @@ h6 {
 }
 
 .bg-light-gray {
-    background-color: #f7f7f7;
+    background-color: #1a202c;
 }
 
 .bg-darkest-gray {
@@ -172,7 +188,7 @@ fieldset[disabled] .btn-xl.active {
 
 .navbar-default {
     border-color: transparent;
-    background-color: #222;
+    background-color: #1a202c;
 }
 
 .navbar-default .navbar-brand {
@@ -219,7 +235,7 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .nav li a:hover,
 .navbar-default .nav li a:focus {
     outline: 0;
-    color: #{{ site.data.template.color.primary }};
+    color: #10b981;
 }
 
 .navbar-default .navbar-nav>.active>a {
@@ -257,7 +273,7 @@ fieldset[disabled] .btn-xl.active {
 
     .navbar-default.navbar-shrink {
         padding: 10px 0;
-        background-color: #222;
+        background-color: #1a202c;
     }
 
     .navbar-default.navbar-shrink .navbar-brand {
@@ -269,7 +285,8 @@ header {
     text-align: center;
     color: #fff;
     background-attachment: scroll;
-    background-image: url('{{ site.baseurl }}/img/header-bg.jpg');
+    background-color: #1a202c;
+    background-image: linear-gradient(rgba(26, 32, 44, 0.8), rgba(26, 32, 44, 0.8)), url('{{ site.baseurl }}/img/header-bg.jpg');
     background-position: center center;
     background-repeat: none;
     -webkit-background-size: cover;
@@ -657,14 +674,18 @@ aside.clients img {
 }
 
 section#contact {
-    background-color: #222;
-    background-image: url('{{ site.baseurl }}/img/map-image.png');
+    background-color: #1a202c;
+    background-image: linear-gradient(rgba(26, 32, 44, 0.9), rgba(26, 32, 44, 0.9)), url('{{ site.baseurl }}/img/map-image.png');
     background-position: center;
     background-repeat: no-repeat;
 }
 
 section#contact .section-heading {
-    color: #fff;
+    color: #10b981;
+}
+
+section#contact .section-subheading {
+    color: #d1d5db;
 }
 
 section#contact .form-group {
@@ -674,6 +695,14 @@ section#contact .form-group {
 section#contact .form-group input,
 section#contact .form-group textarea {
     padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+section#contact .form-group input::placeholder,
+section#contact .form-group textarea::placeholder {
+    color: #9ca3af;
 }
 
 section#contact .form-group input.form-control {
@@ -724,6 +753,12 @@ section#contact .text-danger {
 footer {
     padding: 25px 0;
     text-align: center;
+    background-color: #1a202c;
+    color: #ffffff;
+}
+
+footer span.copyright {
+    color: #d1d5db;
 }
 
 footer span.copyright {

@@ -2,7 +2,7 @@
 #projects {
   position: relative;
   padding: 80px 0;
-  background: linear-gradient(to bottom, #f8f9fa 0%, #f2f2f2 100%);
+  background-color: #1a202c;
 }
 
 /* 포트폴리오 그리드 개선 */
@@ -29,9 +29,9 @@
   overflow: hidden;
   position: relative;
   border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   aspect-ratio: 16/10;
-  background-color: #f0f0f0;
+  background-color: #2d3748;
   transition: all 0.3s ease;
 }
 
@@ -104,17 +104,18 @@
 
 /* 포트폴리오 캡션 */
 .portfolio-caption {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.05);
   padding: 20px;
   text-align: center;
   border-radius: 0 0 8px 8px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   transform: translateY(-12px);
   margin: 0 10px;
   position: relative;
   z-index: 3;
-  border-top: 3px solid #{{ site.data.template.color.primary }};
+  border-top: 3px solid #10b981;
   transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .portfolio-item:hover .portfolio-caption {
@@ -131,7 +132,19 @@
 .portfolio-caption p {
   font-size: 14px;
   margin-bottom: 0;
-  color: #777;
+  color: #d1d5db;
+}
+
+.portfolio-caption h4 {
+  color: #ffffff;
+}
+
+#projects .section-heading {
+  color: #10b981;
+}
+
+#projects .section-subheading {
+  color: #d1d5db;
 }
 
 /* 포트폴리오 카테고리 배지 */

@@ -1,6 +1,6 @@
 /* 스킬 섹션 스타일 */
 #skills {
-  background-color: #f8f9fa;
+  background-color: #1a202c;
   padding: 100px 0;
   position: relative;
   overflow: hidden;
@@ -13,8 +13,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" fill="none" stroke="%23eaeaea" stroke-width="1"/></svg>');
-  opacity: 0.4;
+  background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" fill="none" stroke="%23374151" stroke-width="1"/></svg>');
+  opacity: 0.3;
   z-index: 0;
 }
 
@@ -28,7 +28,7 @@
   font-size: 36px;
   font-weight: 700;
   margin: 20px 0 80px;
-  color: #333;
+  color: #10b981;
 }
 
 #skills .section-subheading {
@@ -81,7 +81,11 @@
   font-size: 22px;
   margin: 15px 0;
   font-weight: 700;
-  color: #333;
+  color: #ffffff;
+}
+
+#skills .text-muted {
+  color: #d1d5db;
 }
 
 /* 애니메이션 */

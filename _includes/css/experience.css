@@ -1,0 +1,30 @@
+/* Experience Section - Dark Theme */
+#experience {
+  background-color: #1a202c;
+  padding: 100px 0;
+  color: #ffffff;
+}
+
+#experience .section-heading {
+  color: #10b981;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+#experience .section-subheading {
+  color: #d1d5db;
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+#experience .text-muted {
+  color: #d1d5db;
+}
+
+#experience .github-chart {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
