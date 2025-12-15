@@ -826,12 +826,13 @@ section#contact .text-danger {
 footer {
     padding: 25px 0;
     text-align: center;
-    background-color: #1a202c;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #1e293b;
+    border-top: 1px solid #e2e8f0;
 }
 
 footer span.copyright {
-    color: #d1d5db;
+    color: #64748b;
 }
 
 footer span.copyright {

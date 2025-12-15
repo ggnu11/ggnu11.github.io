@@ -1,81 +1,78 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Tab Test</title>
-  <style>
-    .skill-tab {
-      padding: 10px 20px;
-      margin: 5px;
-      border: 2px solid #ccc;
-      background: white;
-      cursor: pointer;
-    }
-    .skill-tab.active {
-      background: blue;
-      color: white;
-    }
-    .skills-panel {
-      display: none;
-      padding: 20px;
-      border: 1px solid #ccc;
-      margin-top: 20px;
-    }
-    .skills-panel.active {
-      display: block;
-    }
-  </style>
-</head>
-<body>
-  <h1>Tab Test Page</h1>
+  <head>
+    <meta charset="utf-8" />
+    <title>Tab Test</title>
+    <style>
+      .skill-tab {
+        padding: 10px 20px;
+        margin: 5px;
+        border: 2px solid #ccc;
+        background: white;
+        cursor: pointer;
+      }
+      .skill-tab.active {
+        background: blue;
+        color: white;
+      }
+      .skills-panel {
+        display: none;
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin-top: 20px;
+      }
+      .skills-panel.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tab Test Page</h1>
 
-  <div>
-    <button type="button" class="skill-tab active" data-category="frontend">Frontend</button>
-    <button type="button" class="skill-tab" data-category="styling">Styling</button>
-    <button type="button" class="skill-tab" data-category="tools">Tools</button>
-  </div>
+    <div>
+      <button type="button" class="skill-tab active" data-category="frontend">
+        Frontend
+      </button>
+      <button type="button" class="skill-tab" data-category="styling">
+        Styling
+      </button>
+      <button type="button" class="skill-tab" data-category="tools">
+        Tools
+      </button>
+    </div>
 
-  <div class="skills-panel active" data-panel="frontend">
-    <h2>Frontend Panel</h2>
-    <p>React, TypeScript, Next.js</p>
-  </div>
+    <div class="skills-panel active" data-panel="frontend">
+      <h2>Frontend Panel</h2>
+      <p>React, TypeScript, Next.js</p>
+    </div>
 
-  <div class="skills-panel" data-panel="styling">
-    <h2>Styling Panel</h2>
-    <p>Tailwind CSS, Styled Components</p>
-  </div>
+    <div class="skills-panel" data-panel="styling">
+      <h2>Styling Panel</h2>
+      <p>Tailwind CSS, Styled Components</p>
+    </div>
 
-  <div class="skills-panel" data-panel="tools">
-    <h2>Tools Panel</h2>
-    <p>Git, GitHub, Webpack</p>
-  </div>
+    <div class="skills-panel" data-panel="tools">
+      <h2>Tools Panel</h2>
+      <p>Git, GitHub, Webpack</p>
+    </div>
 
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 
-  <script>
-    $(document).ready(function() {
-      console.log("Test page loaded");
+    <script>
+      $(document).ready(function () {
+        // Test 2: Try click event
+        $(document).on("click", ".skill-tab", function (e) {
+          e.preventDefault();
+          var category = $(this).data("category");
 
-      // Test 1: Check if elements exist
-      console.log("Tabs found:", $(".skill-tab").length);
-      console.log("Panels found:", $(".skills-panel").length);
+          $(".skill-tab").removeClass("active");
+          $(this).addClass("active");
 
-      // Test 2: Try click event
-      $(document).on("click", ".skill-tab", function(e) {
-        e.preventDefault();
-        var category = $(this).data("category");
-        console.log("Tab clicked:", category);
-
-        $(".skill-tab").removeClass("active");
-        $(this).addClass("active");
-
-        $(".skills-panel").removeClass("active");
-        $('.skills-panel[data-panel="' + category + '"]').addClass("active");
+          $(".skills-panel").removeClass("active");
+          $('.skills-panel[data-panel="' + category + '"]').addClass("active");
+        });
       });
-
-      console.log("Event handler attached");
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>

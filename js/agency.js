@@ -23,7 +23,6 @@ $(function () {
 
     // 타겟 섹션이 존재하는지 확인
     if ($targetSection.length === 0) {
-      console.warn("Target section not found:", target);
       return;
     }
 
@@ -171,8 +170,6 @@ $(document).ready(function () {
     });
   } else {
     // IntersectionObserver 미지원 브라우저 fallback - 스크롤 이벤트 사용
-    console.warn("IntersectionObserver not supported, using scroll fallback");
-
     var ticking = false;
 
     function updateActiveTab() {
@@ -233,10 +230,6 @@ $(document).ready(function () {
 
 // Skills Section - Tab Switching
 $(document).ready(function () {
-  console.log("Skills tab switching initialized");
-  console.log("Skill tabs found:", $(".skill-tab").length);
-  console.log("Skill panels found:", $(".skills-panel").length);
-
   // 이벤트 위임 방식으로 안정적으로 처리 (동적으로 추가된 요소도 처리 가능)
   $(document)
     .off("click.skillsTab", ".skill-tab")
@@ -246,18 +239,13 @@ $(document).ready(function () {
 
       var $tab = $(this);
       var category = $tab.data("category");
-      console.log("Skill tab clicked:", category);
-      console.log("Tab element:", this);
 
       if (!category) {
-        console.error("No category data attribute found!");
-        console.error("Tab data attributes:", $tab.data());
         return;
       }
 
       // Don't process if clicking the already active tab
       if ($tab.hasClass("active")) {
-        console.log("Tab already active, skipping");
         return;
       }
 
@@ -270,33 +258,9 @@ $(document).ready(function () {
 
       // Show selected panel
       var $panel = $('.skills-panel[data-panel="' + category + '"]');
-      console.log(
-        "Looking for panel:",
-        '.skills-panel[data-panel="' + category + '"]'
-      );
-      console.log("Panel found:", $panel.length);
-      console.log(
-        "All panels:",
-        $(".skills-panel")
-          .map(function () {
-            return $(this).attr("data-panel");
-          })
-          .get()
-      );
 
       if ($panel.length > 0) {
         $panel.addClass("active");
-        console.log("Panel activated:", category);
-      } else {
-        console.error("Panel not found for category:", category);
-        console.error(
-          "Available panels:",
-          $(".skills-panel")
-            .map(function () {
-              return $(this).attr("data-panel");
-            })
-            .get()
-        );
       }
     });
 
@@ -313,18 +277,14 @@ $(document).ready(function () {
 
 // Experience Section - Tab Switching (한국/일본)
 $(document).ready(function () {
-  console.log("Experience tab switching initialized");
-
   // 이벤트 위임 방식으로 안정적으로 처리
   $(document).on("click", ".experience-tab", function (e) {
     e.preventDefault();
     e.stopPropagation();
 
     var country = $(this).data("country");
-    console.log("Experience tab clicked:", country);
 
     if (!country) {
-      console.error("No country data attribute found!");
       return;
     }
 
@@ -337,17 +297,9 @@ $(document).ready(function () {
 
     // Show selected panel
     var $panel = $('.experience-panel[data-panel="' + country + '"]');
-    console.log(
-      "Looking for panel:",
-      '.experience-panel[data-panel="' + country + '"]'
-    );
-    console.log("Panel found:", $panel.length);
 
     if ($panel.length > 0) {
       $panel.addClass("active");
-      console.log("Panel activated:", country);
-    } else {
-      console.error("Panel not found for country:", country);
     }
   });
 });
@@ -426,11 +378,8 @@ $(document).ready(function () {
 
   // Function to change language
   function changeLanguage(lang) {
-    console.log("Changing language to:", lang);
-
     // Don't change if already in this language
     if (currentLang === lang) {
-      console.log("Already in language:", lang);
       return;
     }
 
@@ -439,8 +388,6 @@ $(document).ready(function () {
 
     currentLang = lang;
     var dataAttr = "data-" + lang;
-    var textUpdated = 0;
-    var titleUpdated = 0;
 
     // Get all elements with data-ko and data-jp, sorted by depth (deepest first)
     var $allElements = $("[data-ko][data-jp]");
@@ -490,7 +437,6 @@ $(document).ready(function () {
             // No icons, just update text
             $elem.text(newText);
           }
-          textUpdated++;
         }
         // If element has children with data attributes, they will be updated separately
       }
@@ -500,12 +446,8 @@ $(document).ready(function () {
       var newTitle = $elem.attr(titleAttr);
       if (newTitle) {
         $elem.attr("title", newTitle);
-        titleUpdated++;
       }
     });
-
-    console.log("Updated", textUpdated, "text elements");
-    console.log("Updated", titleUpdated, "title attributes");
 
     // Change theme
     changeTheme(lang);
@@ -513,22 +455,18 @@ $(document).ready(function () {
     // Update language button states
     $(".lang-btn").removeClass("active");
     $('.lang-btn[data-lang="' + lang + '"]').addClass("active");
-    console.log("Language button state updated");
 
     // Store preference
     localStorage.setItem("preferred-lang", lang);
-    console.log("Language preference saved to localStorage");
   }
 
   // Function to change theme
   function changeTheme(lang) {
-    console.log("Changing theme to:", lang);
     var theme = themes[lang];
     var $body = $("body");
 
     // Add theme class
     $body.removeClass("theme-ko theme-jp").addClass("theme-" + lang);
-    console.log("Body class updated to: theme-" + lang);
 
     // Apply theme with animation
     $body.css("transition", "background-color 0.5s ease");
@@ -547,16 +485,10 @@ $(document).ready(function () {
         "--theme-gradient",
         theme.gradient
       );
-      console.log("CSS variables updated");
-    } else {
-      console.warn("CSS variables not supported in this browser");
     }
   }
 
   // Language button click handler - 이벤트 위임 방식으로 안정적으로 처리
-  console.log("Language toggle initialized");
-  console.log("Language buttons found:", $(".lang-btn").length);
-
   // 이벤트 위임 방식으로 바인딩 (동적으로 추가된 요소도 처리 가능)
   $(document)
     .off("click.languageToggle", ".lang-btn")
@@ -566,18 +498,13 @@ $(document).ready(function () {
 
       var $btn = $(this);
       var lang = $btn.data("lang");
-      console.log("Language button clicked:", lang);
-      console.log("Button element:", this);
 
       if (!lang) {
-        console.error("No language data attribute found!");
-        console.error("Button data attributes:", $btn.data());
         return;
       }
 
       // Don't process if clicking the already active button
       if ($btn.hasClass("active")) {
-        console.log("Already active language, skipping");
         return;
       }
 
@@ -587,11 +514,217 @@ $(document).ready(function () {
   // Load saved language preference
   var savedLang = localStorage.getItem("preferred-lang");
   if (savedLang && (savedLang === "ko" || savedLang === "jp")) {
-    console.log("Loading saved language:", savedLang);
     changeLanguage(savedLang);
   } else {
-    console.log("No saved language, using default: ko");
     // Ensure default language button is active
     $('.lang-btn[data-lang="ko"]').addClass("active");
   }
+});
+
+// Experience Map - Dynamic Connection Lines (완전히 재구축)
+$(document).ready(function () {
+  var updateTimeout = null;
+  var lastUpdateTime = 0;
+  var MIN_UPDATE_INTERVAL = 100; // 최소 업데이트 간격 (ms)
+  var cachedPositions = {}; // 위치 캐싱
+
+  function drawConnectionLines() {
+    // 모바일에서는 연결선 표시 안 함
+    if ($(window).width() <= 768) {
+      $(".connection-overlay").find(".dynamic-line").remove();
+      return;
+    }
+
+    var now = Date.now();
+
+    // 너무 자주 업데이트되는 것을 방지
+    if (now - lastUpdateTime < MIN_UPDATE_INTERVAL) {
+      return;
+    }
+
+    lastUpdateTime = now;
+
+    // 모든 패널 처리 (활성/비활성 모두)
+    $(".experience-panel").each(function () {
+      var $panel = $(this);
+      var $canvas = $panel.find(".map-canvas");
+      var $overlay = $canvas.find(".connection-overlay");
+
+      // 기본 요소 체크
+      if ($overlay.length === 0 || $canvas.length === 0) return;
+
+      // 패널이 활성화되어 있는지 확인
+      var isActive = $panel.hasClass("active");
+
+      if (!isActive) {
+        // 비활성 패널의 연결선은 제거
+        $overlay.find(".dynamic-line").remove();
+        return;
+      }
+
+      // 캔버스 크기 가져오기
+      var canvasRect = $canvas[0].getBoundingClientRect();
+
+      // 캔버스가 화면에 제대로 렌더링되지 않았으면 재시도
+      if (canvasRect.width === 0 || canvasRect.height === 0) {
+        setTimeout(function () {
+          drawConnectionLines();
+        }, 200);
+        return;
+      }
+
+      // SVG 크기 설정
+      $overlay.attr("width", canvasRect.width);
+      $overlay.attr("height", canvasRect.height);
+
+      // 기존 연결선 제거
+      $overlay.find(".dynamic-line").remove();
+
+      // 패널 타입 확인
+      var panelType = $panel.attr("data-panel");
+      var lineColor = panelType === "korea" ? "#6366f1" : "#dc2626";
+      var lineClass = panelType === "korea" ? "korea-line" : "japan-line";
+
+      // 각 마커와 정보 블록을 연결
+      $panel.find(".location-marker").each(function () {
+        var $marker = $(this);
+        var location = $marker.attr("data-location");
+
+        // 해당 위치의 모든 정보 블록 찾기 (여러 개 가능)
+        var $infoBlocks = $panel.find(
+          '.info-block[data-location="' + location + '"]'
+        );
+
+        if ($infoBlocks.length === 0) return;
+
+        // 마커 dot 요소 찾기
+        var $markerDot = $marker.find(".marker-dot");
+        if ($markerDot.length === 0) return;
+
+        // 마커 위치 계산 (중심점) - 고정 좌표 사용
+        var markerRect = $markerDot[0].getBoundingClientRect();
+        var markerCenterX =
+          markerRect.left + markerRect.width / 2 - canvasRect.left;
+        var markerCenterY =
+          markerRect.top + markerRect.height / 2 - canvasRect.top;
+
+        // 각 정보 블록에 대해 연결선 생성
+        $infoBlocks.each(function () {
+          var $infoBlock = $(this);
+
+          // 정보 블록 위치 계산 (왼쪽 중앙)
+          var infoRect = $infoBlock[0].getBoundingClientRect();
+          var infoLeftX = infoRect.left - canvasRect.left;
+          var infoCenterY = infoRect.top + infoRect.height / 2 - canvasRect.top;
+
+          // 유효한 좌표인지 확인
+          if (
+            isNaN(markerCenterX) ||
+            isNaN(markerCenterY) ||
+            isNaN(infoLeftX) ||
+            isNaN(infoCenterY) ||
+            markerCenterX < 0 ||
+            markerCenterY < 0
+          ) {
+            return;
+          }
+
+          // SVG line 요소 생성
+          var $line = $(
+            document.createElementNS("http://www.w3.org/2000/svg", "line")
+          );
+          $line.attr({
+            class: "dynamic-line " + lineClass,
+            x1: markerCenterX,
+            y1: markerCenterY,
+            x2: infoLeftX,
+            y2: infoCenterY,
+            stroke: lineColor,
+            "stroke-width": "2",
+            "stroke-dasharray": "5,5",
+          });
+
+          $overlay.append($line);
+        });
+      });
+    });
+  }
+
+  // 초기 로드
+  setTimeout(function () {
+    drawConnectionLines();
+  }, 800);
+
+  // 이미지 로드 완료 후
+  $(window).on("load", function () {
+    setTimeout(function () {
+      drawConnectionLines();
+    }, 300);
+  });
+
+  // 탭 전환 시
+  $(document).on("click", ".experience-tab", function () {
+    // 탭이 전환되는 동안 여러 번 업데이트
+    setTimeout(drawConnectionLines, 100);
+    setTimeout(drawConnectionLines, 300);
+    setTimeout(drawConnectionLines, 600);
+  });
+
+  // 윈도우 리사이즈
+  var resizeTimer;
+  $(window).on("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      drawConnectionLines();
+    }, 200);
+  });
+
+  // IntersectionObserver로 패널이 화면에 보일 때 업데이트
+  if ("IntersectionObserver" in window) {
+    var panelObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
+            setTimeout(drawConnectionLines, 200);
+          }
+        });
+      },
+      {
+        threshold: [0, 0.1, 0.5, 1],
+        rootMargin: "50px",
+      }
+    );
+
+    $(".experience-panel").each(function () {
+      panelObserver.observe(this);
+    });
+  }
+
+  // MutationObserver로 패널 활성화 감지
+  var mutationObserver = new MutationObserver(function (mutations) {
+    var needsUpdate = false;
+    mutations.forEach(function (mutation) {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "class"
+      ) {
+        var $target = $(mutation.target);
+        if ($target.hasClass("experience-panel")) {
+          needsUpdate = true;
+        }
+      }
+    });
+
+    if (needsUpdate) {
+      setTimeout(drawConnectionLines, 100);
+      setTimeout(drawConnectionLines, 400);
+    }
+  });
+
+  $(".experience-panel").each(function () {
+    mutationObserver.observe(this, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  });
 });

@@ -14,140 +14,202 @@
       </p>
     </div>
 
-    <!-- Profile Card - Trendy Design -->
-    <div class="profile-card">
-      <div class="profile-hero">
-        <div class="profile-avatar">
-          <div class="avatar-circle">
-            <span class="avatar-initial">최</span>
+    <!-- Main Profile Grid -->
+    <div class="profile-grid">
+      <!-- Left: Profile Card -->
+      <div class="profile-card-modern">
+        <div class="card-glow"></div>
+        <div class="profile-avatar-section">
+          <div class="avatar-wrapper">
+            <div class="avatar-circle-modern">
+              <span class="avatar-initial-modern">최</span>
+            </div>
+            <div class="status-badge">
+              <span class="status-dot"></span>
+              <span class="status-text" data-ko="구직중" data-jp="求職中"
+                >구직중</span
+              >
+            </div>
           </div>
-          <div class="status-indicator"></div>
         </div>
-        <div class="profile-intro">
-          <h3 class="profile-name" data-ko="최영훈" data-jp="チェ ヨンフン">
+
+        <div class="profile-info-section">
+          <h3
+            class="profile-name-modern"
+            data-ko="최영훈"
+            data-jp="チェ ヨンフン"
+          >
             최영훈
           </h3>
-          <p class="profile-title">Frontend Developer</p>
+          <p class="profile-title-modern">Frontend Developer</p>
           <p
-            class="profile-bio"
+            class="profile-bio-modern"
             data-ko="사용자 중심의 웹 서비스를 만들기 위해 새로운 기술을 학습하고 적용하는 데 힘쓰고 있습니다."
             data-jp="ユーザー中心のウェブサービスを作るために、新しい技術を学習し適用することに力を入れています。"
           >
             사용자 중심의 웹 서비스를 만들기 위해 새로운 기술을 학습하고
             적용하는 데 힘쓰고 있습니다.
           </p>
+
+          <!-- Quick Stats -->
+          <div class="quick-stats">
+            <div class="stat-item">
+              <div class="stat-icon">💼</div>
+              <div class="stat-content">
+                <span class="stat-value">2+</span>
+                <span class="stat-label" data-ko="년 경력" data-jp="年経歴"
+                  >년 경력</span
+                >
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">🚀</div>
+              <div class="stat-content">
+                <span class="stat-value">5+</span>
+                <span
+                  class="stat-label"
+                  data-ko="프로젝트"
+                  data-jp="プロジェクト"
+                  >프로젝트</span
+                >
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-content">
+                <span class="stat-value">React</span>
+                <span class="stat-label" data-ko="전문" data-jp="専門"
+                  >전문</span
+                >
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="profile-details">
-        <div class="detail-item">
-          <i class="fas fa-birthday-cake"></i>
-          <span class="detail-label" data-ko="생년월일" data-jp="生年月日"
-            >생년월일</span
-          >
-          <span class="detail-value">1996.07.12</span>
+
+      <!-- Right: Details & Contact Cards -->
+      <div class="info-cards-grid">
+        <!-- Contact Info Card -->
+        <div class="info-card contact-card">
+          <div class="info-card-header">
+            <i class="fas fa-address-card"></i>
+            <h4 data-ko="연락처 정보" data-jp="連絡先情報">연락처 정보</h4>
+          </div>
+          <div class="info-card-content">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label" data-ko="이메일" data-jp="メール"
+                  >이메일</span
+                >
+                <span class="contact-value" id="email"
+                  >choiyounghun0712@gmail.com</span
+                >
+                <button
+                  class="copy-btn-modern"
+                  onclick="copyEmail()"
+                  title="복사"
+                  data-ko-title="복사"
+                  data-jp-title="コピー"
+                >
+                  <i class="fas fa-copy"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <span class="contact-label" data-ko="위치" data-jp="位置"
+                  >위치</span
+                >
+                <span
+                  class="contact-value"
+                  data-ko="서울, 대한민국"
+                  data-jp="ソウル、韓国"
+                  >서울, 대한민국</span
+                >
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="detail-item">
-          <i class="fas fa-graduation-cap"></i>
-          <span class="detail-label" data-ko="학력" data-jp="学歴">학력</span>
-          <span
-            class="detail-value"
-            data-ko="서울 사이버대학 컴퓨터공학 전공"
-            data-jp="ソウルサイバー大学 コンピュータ工学専攻"
-            >서울 사이버대학 컴퓨터공학 전공</span
-          >
+
+        <!-- Education Card -->
+        <div class="info-card education-card">
+          <div class="info-card-header">
+            <i class="fas fa-graduation-cap"></i>
+            <h4 data-ko="학력" data-jp="学歴">학력</h4>
+          </div>
+          <div class="info-card-content">
+            <div class="education-item">
+              <div class="education-dot"></div>
+              <div class="education-details">
+                <h5 data-ko="서울 사이버대학교" data-jp="ソウルサイバー大学">
+                  서울 사이버대학교
+                </h5>
+                <p data-ko="컴퓨터공학 전공" data-jp="コンピュータ工学専攻">
+                  컴퓨터공학 전공
+                </p>
+                <span class="education-date">2020 - 2024</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="detail-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <span class="detail-label" data-ko="지역" data-jp="地域">지역</span>
-          <span class="detail-value" data-ko="서울" data-jp="ソウル">서울</span>
+
+        <!-- Birthday Card -->
+        <div class="info-card birthday-card">
+          <div class="info-card-header">
+            <i class="fas fa-birthday-cake"></i>
+            <h4 data-ko="생년월일" data-jp="生年月日">생년월일</h4>
+          </div>
+          <div class="info-card-content">
+            <div class="birthday-display">
+              <span class="birthday-value">1996.07.12</span>
+            </div>
+          </div>
         </div>
-        <div class="detail-item">
-          <i class="fas fa-envelope"></i>
-          <span class="detail-label" data-ko="이메일" data-jp="メール"
-            >이메일</span
-          >
-          <span class="detail-value" id="email"
-            >choiyounghun0712@gmail.com</span
-          >
-          <button
-            class="copy-btn"
-            onclick="copyEmail()"
-            title="복사"
-            data-ko-title="복사"
-            data-jp-title="コピー"
-          >
-            <i class="fas fa-copy"></i>
-          </button>
+
+        <!-- Languages & Cert Card -->
+        <div class="info-card skills-card">
+          <div class="info-card-header">
+            <i class="fas fa-language"></i>
+            <h4 data-ko="언어 & 자격증" data-jp="言語 & 資格">언어 & 자격증</h4>
+          </div>
+          <div class="info-card-content">
+            <div class="skill-tags">
+              <span class="skill-tag">
+                <i class="fas fa-circle korean"></i>
+                <span data-ko="한국어 (Native)" data-jp="韓国語 (Native)"
+                  >한국어 (Native)</span
+                >
+              </span>
+              <span class="skill-tag">
+                <i class="fas fa-circle english"></i>
+                <span
+                  data-ko="영어 (Intermediate)"
+                  data-jp="英語 (Intermediate)"
+                  >영어 (Intermediate)</span
+                >
+              </span>
+              <span class="skill-tag cert">
+                <i class="fas fa-certificate"></i>
+                <span
+                  data-ko="정보처리기사 (2023)"
+                  data-jp="情報処理技術者 (2023)"
+                  >정보처리기사 (2023)</span
+                >
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Languages & Certifications Grid -->
-    <div class="credentials-grid">
-      <!-- Languages Section -->
-      <div class="credential-card">
-        <div class="credential-header">
-          <i class="fas fa-language"></i>
-          <h3 data-ko="어학" data-jp="語学">어학</h3>
-        </div>
-        <div class="language-list">
-          <div class="language-item">
-            <div class="language-name">
-              <i class="fas fa-circle"></i>
-              <span data-ko="한국어" data-jp="韓国語">한국어</span>
-            </div>
-            <span class="language-level">Native</span>
-          </div>
-          <div class="language-item">
-            <div class="language-name">
-              <i class="fas fa-circle"></i>
-              <span data-ko="영어" data-jp="英語">영어</span>
-            </div>
-            <span class="language-level">Intermediate</span>
-          </div>
-          <!-- 추가 언어가 있다면 여기에 추가 -->
-        </div>
-      </div>
-
-      <!-- Certifications Section -->
-      <div class="credential-card">
-        <div class="credential-header">
-          <i class="fas fa-certificate"></i>
-          <h3 data-ko="자격증" data-jp="資格">자격증</h3>
-        </div>
-        <div class="certification-list">
-          <div class="certification-item">
-            <div class="cert-icon">
-              <i class="fas fa-award"></i>
-            </div>
-            <div class="cert-info">
-              <h4 data-ko="정보처리기사" data-jp="情報処理技術者">
-                정보처리기사
-              </h4>
-              <p data-ko="한국산업인력공단" data-jp="韓国産業人力公団">
-                한국산업인력공단
-              </p>
-              <span class="cert-date">2023</span>
-            </div>
-          </div>
-          <!-- 추가 자격증이 있다면 여기에 추가 -->
-          <!-- 예시:
-          <div class="certification-item">
-            <div class="cert-icon">
-              <i class="fas fa-award"></i>
-            </div>
-            <div class="cert-info">
-              <h4>자격증 이름</h4>
-              <p>발급 기관</p>
-              <span class="cert-date">년도</span>
-            </div>
-          </div>
-          -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Timeline Section -->
+    <!-- Timeline Section (유지) -->
     <div class="timeline-wrapper">
       <div class="timeline-header">
         <h3 data-ko="커리어 타임라인" data-jp="キャリアタイムライン">
