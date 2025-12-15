@@ -106,176 +106,244 @@
   }
 }
 
-/* Experience Cards */
-.experience-cards {
-  max-width: 900px;
-  margin: 0 auto 48px;
-}
-
-.experience-card {
+/* Map Canvas - Single Container */
+.map-canvas {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  min-height: 700px;
   background: #ffffff;
-  border: 2px solid #e2e8f0;
-  border-radius: 20px;
-  padding: 32px;
-  margin-bottom: 24px;
-  display: flex;
-  gap: 24px;
-  transition: all 0.3s ease;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.experience-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
-  border-color: #6366f1;
+/* Map Image - Centered with margins */
+.map-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 45%;
+  max-height: 80%;
+  object-fit: contain;
+  opacity: 0.95;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
 }
 
-.company-logo {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+/* Location Markers - Positioned with % coordinates */
+.location-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
 }
 
-.company-logo i {
-  font-size: 36px;
-  color: #ffffff;
+.marker-dot {
+  width: 12px;
+  height: 12px;
+  background: #6366f1;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+  position: relative;
+  z-index: 2;
 }
 
-.company-logo.japan-style {
-  background: linear-gradient(135deg, #dc2626, #991b1b);
+.japan-marker .marker-dot {
+  background: #dc2626;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.4);
 }
 
-.experience-info {
-  flex: 1;
+.marker-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: #6366f1;
+  border-radius: 50%;
+  opacity: 0.6;
+  z-index: 1;
+  animation: pulse 2s ease-out infinite;
 }
 
-.company-name {
-  font-size: 24px;
-  font-weight: 800;
+.japan-marker .marker-pulse {
+  background: #dc2626;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 0;
+  }
+}
+
+.marker-label {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 700;
   color: #1e293b;
-  margin: 0 0 8px 0;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 4px 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.position {
+.location-marker:hover {
+  z-index: 20;
+}
+
+.location-marker:hover .marker-dot {
+  transform: scale(1.3);
+  transition: transform 0.3s ease;
+}
+
+/* Info Blocks - Text annotations */
+.info-block {
+  position: absolute;
+  max-width: 280px;
+  z-index: 10;
+}
+
+.info-title {
   font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.korea-info .info-title {
+  color: #4338ca;
+}
+
+.japan-info .info-title {
+  color: #991b1b;
+}
+
+.info-role {
+  font-size: 13px;
   font-weight: 600;
-  color: #6366f1;
-  margin: 0 0 8px 0;
-}
-
-.period {
-  font-size: 14px;
   color: #64748b;
-  margin: 0 0 16px 0;
+  margin: 0 0 4px 0;
 }
 
-.experience-details {
+.info-period {
+  font-size: 12px;
+  color: #94a3b8;
+  margin: 0 0 10px 0;
+  font-weight: 500;
+}
+
+.info-details {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.experience-details li {
+.info-details li {
   position: relative;
-  padding-left: 24px;
-  margin-bottom: 12px;
-  font-size: 15px;
-  color: #475569;
-  line-height: 1.6;
+  padding-left: 14px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.5;
 }
 
-.experience-details li::before {
-  content: "✓";
+.info-details li::before {
+  content: "•";
   position: absolute;
   left: 0;
-  color: #6366f1;
+  color: #cbd5e1;
   font-weight: 700;
 }
 
-/* GitHub Section */
-.github-section {
-  background: #ffffff;
-  border: 2px solid #e2e8f0;
-  border-radius: 20px;
-  padding: 32px;
-  max-width: 900px;
-  margin: 0 auto;
-  transition: all 0.3s ease;
-}
-
-.github-section:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  border-color: #6366f1;
-}
-
-.github-title {
+.github-info .info-title {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 22px;
-  font-weight: 700;
+  gap: 6px;
   color: #1e293b;
-  margin: 0 0 24px 0;
 }
 
-.github-title i {
-  font-size: 28px;
+.github-info .info-title i {
+  font-size: 18px;
   color: #6366f1;
 }
 
-.github-chart {
+.github-chart-small {
+  margin-top: 8px;
+  padding: 8px;
   background: #f8fafc;
-  padding: 24px;
-  border-radius: 12px;
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.github-chart img {
-  max-width: 100%;
-  height: auto;
   border-radius: 8px;
 }
 
-.github-description {
-  font-size: 15px;
-  color: #64748b;
-  text-align: center;
-  margin: 0;
+.github-chart-small img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
 }
 
-/* Japan Culture Note */
-.japan-culture-note {
-  background: linear-gradient(135deg, #fef2f2, #fee2e2);
-  border: 2px solid #fca5a5;
-  border-radius: 16px;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  max-width: 900px;
-  margin: 0 auto;
+/* Connection Overlay SVG */
+.connection-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  overflow: visible;
 }
 
-.japan-culture-note i {
-  font-size: 28px;
-  color: #dc2626;
-  flex-shrink: 0;
+.dynamic-line {
+  opacity: 0.4;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08));
 }
 
-.japan-culture-note p {
-  font-size: 15px;
-  color: #991b1b;
-  margin: 0;
-  font-weight: 500;
+.korea-line {
+  stroke: #6366f1;
 }
+
+.japan-line {
+  stroke: #dc2626;
+}
+
 
 /* Responsive */
+@media (max-width: 1200px) {
+  .map-canvas {
+    padding: 50px 30px;
+    min-height: 600px;
+  }
+
+  .map-image {
+    max-width: 50%;
+  }
+
+  .info-block {
+    max-width: 240px;
+  }
+
+  .info-title {
+    font-size: 14px;
+  }
+
+  .info-details li {
+    font-size: 11px;
+  }
+}
+
 @media (max-width: 768px) {
   #experience {
     padding: 70px 0;
@@ -294,22 +362,36 @@
     font-size: 14px;
   }
 
-  .experience-card {
-    flex-direction: column;
-    padding: 24px;
+  .map-canvas {
+    padding: 40px 20px;
+    min-height: 500px;
   }
 
-  .company-logo {
-    width: 64px;
-    height: 64px;
+  .map-image {
+    max-width: 60%;
   }
 
-  .company-logo i {
-    font-size: 28px;
+  .info-block {
+    max-width: 200px;
   }
 
-  .company-name {
-    font-size: 20px;
+  .info-title {
+    font-size: 13px;
+  }
+
+  .info-role,
+  .info-period {
+    font-size: 11px;
+  }
+
+  .info-details li {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+
+  .marker-label {
+    font-size: 10px;
+    padding: 3px 6px;
   }
 }
 
@@ -325,5 +407,14 @@
   .experience-tab {
     width: 100%;
     justify-content: center;
+  }
+
+  .map-canvas {
+    padding: 30px 15px;
+    min-height: 450px;
+  }
+
+  .map-image {
+    max-width: 70%;
   }
 }
