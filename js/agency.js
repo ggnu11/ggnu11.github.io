@@ -545,108 +545,97 @@ $(document).ready(function () {
 
     lastUpdateTime = now;
 
-    // 모든 패널 처리 (활성/비활성 모두)
-    $(".experience-panel").each(function () {
-      var $panel = $(this);
-      var $canvas = $panel.find(".map-canvas");
-      var $overlay = $canvas.find(".connection-overlay");
+    // 활성화된 패널만 처리
+    var $activePanel = $(".experience-panel.active");
 
-      // 기본 요소 체크
-      if ($overlay.length === 0 || $canvas.length === 0) return;
+    if ($activePanel.length === 0) return;
 
-      // 패널이 활성화되어 있는지 확인
-      var isActive = $panel.hasClass("active");
+    var $canvas = $activePanel.find(".map-canvas");
+    var $overlay = $canvas.find(".connection-overlay");
 
-      if (!isActive) {
-        // 비활성 패널의 연결선은 제거
-        $overlay.find(".dynamic-line").remove();
-        return;
-      }
+    // 기본 요소 체크
+    if ($overlay.length === 0 || $canvas.length === 0) return;
 
-      // 캔버스 크기 가져오기
-      var canvasRect = $canvas[0].getBoundingClientRect();
+    // 캔버스 크기 가져오기
+    var canvasRect = $canvas[0].getBoundingClientRect();
 
-      // 캔버스가 화면에 제대로 렌더링되지 않았으면 재시도
-      if (canvasRect.width === 0 || canvasRect.height === 0) {
-        setTimeout(function () {
-          drawConnectionLines();
-        }, 200);
-        return;
-      }
+    // 캔버스가 화면에 제대로 렌더링되지 않았으면 스킵
+    if (canvasRect.width === 0 || canvasRect.height === 0) {
+      return;
+    }
 
-      // SVG 크기 설정
-      $overlay.attr("width", canvasRect.width);
-      $overlay.attr("height", canvasRect.height);
+    // SVG 크기 설정
+    $overlay.attr("width", canvasRect.width);
+    $overlay.attr("height", canvasRect.height);
 
-      // 기존 연결선 제거
-      $overlay.find(".dynamic-line").remove();
+    // 기존 연결선 제거
+    $overlay.find(".dynamic-line").remove();
 
-      // 패널 타입 확인
-      var panelType = $panel.attr("data-panel");
-      var lineColor = panelType === "korea" ? "#6366f1" : "#dc2626";
-      var lineClass = panelType === "korea" ? "korea-line" : "japan-line";
+    // 패널 타입 확인
+    var panelType = $activePanel.attr("data-panel");
+    var lineColor = panelType === "korea" ? "#6366f1" : "#dc2626";
+    var lineClass = panelType === "korea" ? "korea-line" : "japan-line";
 
-      // 각 마커와 정보 블록을 연결
-      $panel.find(".location-marker").each(function () {
-        var $marker = $(this);
-        var location = $marker.attr("data-location");
+    // 각 마커와 정보 블록을 연결
+    $activePanel.find(".location-marker").each(function () {
+      var $marker = $(this);
+      var location = $marker.attr("data-location");
 
-        // 해당 위치의 모든 정보 블록 찾기 (여러 개 가능)
-        var $infoBlocks = $panel.find(
-          '.info-block[data-location="' + location + '"]'
+      // 해당 위치의 모든 정보 블록 찾기 (여러 개 가능)
+      var $infoBlocks = $activePanel.find(
+        '.info-block[data-location="' + location + '"]'
+      );
+
+      if ($infoBlocks.length === 0) return;
+
+      // 마커 dot 요소 찾기
+      var $markerDot = $marker.find(".marker-dot");
+      if ($markerDot.length === 0) return;
+
+      // 마커 위치 계산 (중심점)
+      var markerRect = $markerDot[0].getBoundingClientRect();
+      var markerCenterX =
+        markerRect.left + markerRect.width / 2 - canvasRect.left;
+      var markerCenterY =
+        markerRect.top + markerRect.height / 2 - canvasRect.top;
+
+      // 각 정보 블록에 대해 연결선 생성
+      $infoBlocks.each(function () {
+        var $infoBlock = $(this);
+
+        // 정보 블록 위치 계산 (왼쪽 중앙)
+        var infoRect = $infoBlock[0].getBoundingClientRect();
+        var infoLeftX = infoRect.left - canvasRect.left;
+        var infoCenterY = infoRect.top + infoRect.height / 2 - canvasRect.top;
+
+        // 유효한 좌표인지 확인
+        if (
+          isNaN(markerCenterX) ||
+          isNaN(markerCenterY) ||
+          isNaN(infoLeftX) ||
+          isNaN(infoCenterY) ||
+          markerCenterX < 0 ||
+          markerCenterY < 0
+        ) {
+          return;
+        }
+
+        // SVG line 요소 생성
+        var $line = $(
+          document.createElementNS("http://www.w3.org/2000/svg", "line")
         );
-
-        if ($infoBlocks.length === 0) return;
-
-        // 마커 dot 요소 찾기
-        var $markerDot = $marker.find(".marker-dot");
-        if ($markerDot.length === 0) return;
-
-        // 마커 위치 계산 (중심점) - 고정 좌표 사용
-        var markerRect = $markerDot[0].getBoundingClientRect();
-        var markerCenterX =
-          markerRect.left + markerRect.width / 2 - canvasRect.left;
-        var markerCenterY =
-          markerRect.top + markerRect.height / 2 - canvasRect.top;
-
-        // 각 정보 블록에 대해 연결선 생성
-        $infoBlocks.each(function () {
-          var $infoBlock = $(this);
-
-          // 정보 블록 위치 계산 (왼쪽 중앙)
-          var infoRect = $infoBlock[0].getBoundingClientRect();
-          var infoLeftX = infoRect.left - canvasRect.left;
-          var infoCenterY = infoRect.top + infoRect.height / 2 - canvasRect.top;
-
-          // 유효한 좌표인지 확인
-          if (
-            isNaN(markerCenterX) ||
-            isNaN(markerCenterY) ||
-            isNaN(infoLeftX) ||
-            isNaN(infoCenterY) ||
-            markerCenterX < 0 ||
-            markerCenterY < 0
-          ) {
-            return;
-          }
-
-          // SVG line 요소 생성
-          var $line = $(
-            document.createElementNS("http://www.w3.org/2000/svg", "line")
-          );
-          $line.attr({
-            class: "dynamic-line " + lineClass,
-            x1: markerCenterX,
-            y1: markerCenterY,
-            x2: infoLeftX,
-            y2: infoCenterY,
-            stroke: lineColor,
-            "stroke-width": "2",
-            "stroke-dasharray": "5,5",
-          });
-
-          $overlay.append($line);
+        $line.attr({
+          class: "dynamic-line " + lineClass,
+          x1: markerCenterX,
+          y1: markerCenterY,
+          x2: infoLeftX,
+          y2: infoCenterY,
+          stroke: lineColor,
+          "stroke-width": "2",
+          "stroke-dasharray": "5,5",
         });
+
+        $overlay.append($line);
       });
     });
   }
@@ -748,17 +737,27 @@ $(document).ready(function () {
   });
 
   // 탭 전환 시 줌 초기화
+  var isTabSwitching = false;
   $(document).on("click", ".experience-tab", function () {
+    // 모든 패널의 줌 초기화
     $(".experience-panel").each(function () {
-      if ($(this).hasClass("active")) {
-        resetZoom($(this));
+      var $panel = $(this);
+      if (zoomedLocation) {
+        resetZoom($panel);
       }
     });
 
-    // 탭이 전환되는 동안 여러 번 업데이트
-    setTimeout(drawConnectionLines, 100);
-    setTimeout(drawConnectionLines, 300);
-    setTimeout(drawConnectionLines, 600);
+    // 탭 전환 중 플래그 설정
+    isTabSwitching = true;
+
+    // 즉시 모든 연결선 제거 (잘못된 위치에 그려지는 것 방지)
+    $(".connection-overlay").find(".dynamic-line").remove();
+
+    // 패널 전환 애니메이션이 완료될 때까지 대기 후 연결선 업데이트
+    setTimeout(function () {
+      drawConnectionLines();
+      isTabSwitching = false;
+    }, 450);
   });
 
   // 초기 로드
@@ -805,6 +804,11 @@ $(document).ready(function () {
 
   // MutationObserver로 패널 활성화 감지
   var mutationObserver = new MutationObserver(function (mutations) {
+    // 탭 전환 중이면 무시 (중복 호출 방지)
+    if (isTabSwitching) {
+      return;
+    }
+
     var needsUpdate = false;
     mutations.forEach(function (mutation) {
       if (
@@ -819,8 +823,7 @@ $(document).ready(function () {
     });
 
     if (needsUpdate) {
-      setTimeout(drawConnectionLines, 100);
-      setTimeout(drawConnectionLines, 400);
+      setTimeout(drawConnectionLines, 450);
     }
   });
 

@@ -212,14 +212,7 @@ function initExperienceMap() {
     resizeTimer = setTimeout(window.updateExperienceConnections, 150);
   });
 
-  // Update on tab change
-  const tabs = document.querySelectorAll(".experience-tab");
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", function () {
-      // Wait for panel transition
-      setTimeout(window.updateExperienceConnections, 150);
-    });
-  });
+  // Tab change is handled by agency.js to avoid duplicate event handlers
 }
 
 // Run init when DOM is loaded
