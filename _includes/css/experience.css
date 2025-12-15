@@ -371,6 +371,24 @@
   transform: translate(-50%, -50%) scale(0.95);
 }
 
+/* 선택된 마커 강조 */
+.location-marker.selected {
+  z-index: 30;
+  transform: translate(-50%, -50%) scale(1.15);
+}
+
+.location-marker.selected .marker-dot {
+  transform: scale(1.3);
+  box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.2),
+    0 0 30px rgba(99, 102, 241, 0.9), 0 6px 20px rgba(99, 102, 241, 0.6),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.japan-marker.selected .marker-dot {
+  box-shadow: 0 0 0 6px rgba(220, 38, 38, 0.2), 0 0 30px rgba(220, 38, 38, 0.9),
+    0 6px 20px rgba(220, 38, 38, 0.6), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .marker-dot {
   width: 14px;
   height: 14px;
@@ -447,6 +465,21 @@
     inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
+.location-marker.selected .marker-label {
+  transform: translateX(-50%) translateY(-3px);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3), 0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+  font-weight: 800;
+  color: #6366f1;
+}
+
+.japan-marker.selected .marker-label {
+  color: #dc2626;
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3), 0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
 .location-marker:hover {
   z-index: 20;
 }
@@ -466,10 +499,12 @@
 /* Info Blocks - Text annotations with Glassmorphism */
 .info-block {
   position: absolute;
-  max-width: 280px;
+  min-width: 280px;
+  max-width: 380px;
+  width: auto;
   z-index: 10;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-radius: 20px;
@@ -477,14 +512,137 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.9);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.info-block::after {
+  content: "🔍";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.info-block:hover::after {
+  opacity: 0.6;
 }
 
 .info-block:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 12px 48px rgba(99, 102, 241, 0.15),
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 16px 56px rgba(99, 102, 241, 0.2),
+    0 6px 16px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* 카테고리별 박스 스타일 */
+.education-block {
+  border-left: 4px solid #3b82f6;
+}
+
+.parttime-block {
+  border-left: 4px solid #f59e0b;
+}
+
+.career-block {
+  border-left: 4px solid #8b5cf6;
+}
+
+.education-block:hover {
+  border-color: #2563eb;
+  box-shadow: 0 12px 48px rgba(59, 130, 246, 0.2),
     0 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.parttime-block:hover {
+  border-color: #d97706;
+  box-shadow: 0 12px 48px rgba(245, 158, 11, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.career-block:hover {
+  border-color: #7c3aed;
+  box-shadow: 0 12px 48px rgba(139, 92, 246, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* 카테고리 섹션 */
+.info-category {
+  margin-bottom: 20px;
+}
+
+.info-category:last-child {
+  margin-bottom: 0;
+}
+
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.category-badge.education {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1e40af;
+  border: 1px solid #93c5fd;
+}
+
+.category-badge.parttime {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+.category-badge.career {
+  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+  color: #5b21b6;
+  border: 1px solid #a78bfa;
+}
+
+.category-item {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.category-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.item-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 5px 0;
+  line-height: 1.4;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.item-period {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  margin: 0 0 5px 0;
+}
+
+.item-desc {
+  font-size: 12px;
+  font-weight: 500;
+  color: #475569;
+  margin: 0;
+  line-height: 1.6;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .info-title {
@@ -623,6 +781,19 @@
 .dynamic-line {
   opacity: 0.6;
   transition: all 0.3s ease;
+  stroke-width: 2;
+}
+
+/* 마커 클릭 시 다른 연결선은 흐리게 */
+.dynamic-line.dimmed {
+  opacity: 0.15;
+  stroke-width: 2;
+}
+
+/* 마커 클릭 시 해당 연결선은 강조 */
+.dynamic-line.highlighted {
+  opacity: 1;
+  stroke-width: 4;
 }
 
 .korea-line {
@@ -630,9 +801,19 @@
     drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
+.korea-line.highlighted {
+  filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.8))
+    drop-shadow(0 4px 8px rgba(99, 102, 241, 0.4));
+}
+
 .japan-line {
   filter: drop-shadow(0 0 6px rgba(220, 38, 38, 0.5))
     drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.japan-line.highlighted {
+  filter: drop-shadow(0 0 12px rgba(220, 38, 38, 0.8))
+    drop-shadow(0 4px 8px rgba(220, 38, 38, 0.4));
 }
 
 /* Enhance line visibility on hover */
@@ -648,6 +829,144 @@
   opacity: 0.9;
   filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.7))
     drop-shadow(0 2px 6px rgba(0, 0, 0, 0.15));
+}
+
+/* Experience Detail Modal */
+.experience-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+.experience-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+  animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10000;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #64748b;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10001;
+}
+
+.modal-close:hover {
+  background: #ef4444;
+  color: white;
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+.modal-body {
+  padding: 40px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* 모달 내 카테고리 스타일 */
+.modal-body .category-badge {
+  font-size: 14px;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+}
+
+.modal-body .category-item {
+  padding: 16px 0;
+  border-bottom: 2px solid rgba(226, 232, 240, 0.6);
+}
+
+.modal-body .category-item:last-child {
+  border-bottom: none;
+}
+
+.modal-body .item-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.modal-body .item-period {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.modal-body .item-desc {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* 스크롤바 스타일 */
+.modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: rgba(226, 232, 240, 0.3);
+  border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
 }
 
 /* Responsive */
@@ -708,9 +1027,10 @@
   }
 
   .info-block {
-    max-width: 200px;
-    padding: 14px;
-    background: rgba(255, 255, 255, 0.85);
+    min-width: 220px;
+    max-width: 280px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.9);
   }
 
   .info-title {

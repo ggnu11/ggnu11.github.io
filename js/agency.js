@@ -626,6 +626,7 @@ $(document).ready(function () {
         );
         $line.attr({
           class: "dynamic-line " + lineClass,
+          "data-location": location,
           x1: markerCenterX,
           y1: markerCenterY,
           x2: infoLeftX,
@@ -747,6 +748,11 @@ $(document).ready(function () {
       }
     });
 
+    // 마커 선택 상태 초기화
+    selectedLocation = null;
+    $(".location-marker").removeClass("selected");
+    $(".dynamic-line").removeClass("highlighted dimmed");
+
     // 탭 전환 중 플래그 설정
     isTabSwitching = true;
 
@@ -833,4 +839,101 @@ $(document).ready(function () {
       attributeFilter: ["class"],
     });
   });
+
+  // 마커 클릭 시 연결선 강조
+  var selectedLocation = null;
+
+  $(document).on("click", ".location-marker", function (e) {
+    e.stopPropagation();
+
+    var clickedLocation = $(this).attr("data-location");
+    var $activePanel = $(".experience-panel.active");
+    var $allLines = $activePanel.find(".connection-overlay .dynamic-line");
+
+    // 같은 마커를 다시 클릭하면 선택 해제
+    if (selectedLocation === clickedLocation) {
+      selectedLocation = null;
+      // 모든 연결선을 기본 상태로
+      $allLines.removeClass("highlighted dimmed");
+      // 마커 강조 제거
+      $activePanel.find(".location-marker").removeClass("selected");
+    } else {
+      selectedLocation = clickedLocation;
+
+      // 먼저 모든 연결선의 클래스 제거
+      $allLines.removeClass("highlighted dimmed");
+
+      // 모든 연결선을 순회하면서 선택된 것과 아닌 것 구분
+      $allLines.each(function () {
+        var lineLocation = $(this).attr("data-location");
+        if (lineLocation === clickedLocation) {
+          $(this).addClass("highlighted");
+        } else {
+          $(this).addClass("dimmed");
+        }
+      });
+
+      // 모든 마커의 선택 상태 제거
+      $activePanel.find(".location-marker").removeClass("selected");
+      // 클릭된 마커 강조
+      $(this).addClass("selected");
+    }
+  });
+
+  // 다른 곳 클릭 시 선택 해제
+  $(document).on("click", function (e) {
+    if (
+      !$(e.target).closest(".location-marker").length &&
+      !$(e.target).closest(".info-block").length
+    ) {
+      selectedLocation = null;
+      var $activePanel = $(".experience-panel.active");
+      $activePanel
+        .find(".connection-overlay .dynamic-line")
+        .removeClass("highlighted dimmed");
+      $activePanel.find(".location-marker").removeClass("selected");
+    }
+  });
+
+  // Experience Modal functionality
+  var $modal = $("#experienceModal");
+  var $modalBody = $modal.find(".modal-body");
+
+  // info-block 클릭 시 모달 열기
+  $(document).on("click", ".info-block", function (e) {
+    e.stopPropagation();
+
+    var $block = $(this);
+    var $category = $block.find(".info-category").clone();
+
+    // 모달에 내용 삽입
+    $modalBody.empty().append($category);
+
+    // 모달 열기
+    $modal.addClass("active");
+    $("body").css("overflow", "hidden");
+  });
+
+  // 모달 닫기 버튼
+  $modal.find(".modal-close").on("click", function () {
+    closeModal();
+  });
+
+  // 오버레이 클릭 시 모달 닫기
+  $modal.find(".modal-overlay").on("click", function () {
+    closeModal();
+  });
+
+  // ESC 키로 모달 닫기
+  $(document).on("keydown", function (e) {
+    if (e.key === "Escape" && $modal.hasClass("active")) {
+      closeModal();
+    }
+  });
+
+  // 모달 닫기 함수
+  function closeModal() {
+    $modal.removeClass("active");
+    $("body").css("overflow", "");
+  }
 });
