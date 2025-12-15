@@ -521,12 +521,13 @@ $(document).ready(function () {
   }
 });
 
-// Experience Map - Dynamic Connection Lines (완전히 재구축)
+// Experience Map - Dynamic Connection Lines + Zoom Feature
 $(document).ready(function () {
   var updateTimeout = null;
   var lastUpdateTime = 0;
   var MIN_UPDATE_INTERVAL = 100; // 최소 업데이트 간격 (ms)
   var cachedPositions = {}; // 위치 캐싱
+  var zoomedLocation = null; // 현재 확대된 위치
 
   function drawConnectionLines() {
     // 모바일에서는 연결선 표시 안 함
@@ -650,6 +651,116 @@ $(document).ready(function () {
     });
   }
 
+  // 마커 확대/축소 기능
+  function zoomToLocation(location, $panel) {
+    var $canvas = $panel.find(".map-canvas");
+    var $mapImage = $canvas.find(".map-image");
+    var $markers = $canvas.find(".location-marker");
+    var $infoBlocks = $canvas.find(".info-block");
+    var $resetBtn = $canvas.find(".zoom-reset-btn");
+
+    // 이미 확대된 위치를 다시 클릭하면 원복
+    if (zoomedLocation === location) {
+      resetZoom($panel);
+      return;
+    }
+
+    // 확대 상태 저장
+    zoomedLocation = location;
+
+    // 해당 위치의 마커와 정보 블록만 표시
+    $markers.each(function () {
+      var $marker = $(this);
+      if ($marker.attr("data-location") === location) {
+        $marker.addClass("zoomed-active");
+      } else {
+        $marker.addClass("zoomed-inactive");
+      }
+    });
+
+    $infoBlocks.each(function () {
+      var $block = $(this);
+      if ($block.attr("data-location") === location) {
+        $block.addClass("zoomed-active");
+      } else {
+        $block.addClass("zoomed-inactive");
+      }
+    });
+
+    // 지도 확대
+    $canvas.addClass("zoomed");
+
+    // 리셋 버튼 표시
+    if ($resetBtn.length === 0) {
+      var $newResetBtn = $(
+        '<button class="zoom-reset-btn" title="원래대로"><i class="fas fa-compress-arrows-alt"></i> <span data-ko="원래대로" data-jp="元に戻す">원래대로</span></button>'
+      );
+      $canvas.append($newResetBtn);
+
+      // 현재 언어 적용
+      var currentLang = $("body").attr("data-lang") || "ko";
+      var resetText = currentLang === "jp" ? "元に戻す" : "원래대로";
+      $newResetBtn.find("span").text(resetText);
+    } else {
+      $resetBtn.fadeIn(300);
+    }
+
+    // 연결선 업데이트
+    setTimeout(drawConnectionLines, 400);
+  }
+
+  function resetZoom($panel) {
+    var $canvas = $panel.find(".map-canvas");
+    var $markers = $canvas.find(".location-marker");
+    var $infoBlocks = $canvas.find(".info-block");
+    var $resetBtn = $canvas.find(".zoom-reset-btn");
+
+    // 확대 상태 초기화
+    zoomedLocation = null;
+
+    // 모든 요소 표시
+    $markers.removeClass("zoomed-active zoomed-inactive");
+    $infoBlocks.removeClass("zoomed-active zoomed-inactive");
+    $canvas.removeClass("zoomed");
+
+    // 리셋 버튼 숨김
+    $resetBtn.fadeOut(300);
+
+    // 연결선 업데이트
+    setTimeout(drawConnectionLines, 400);
+  }
+
+  // 마커 클릭 이벤트
+  $(document).on("click", ".location-marker", function (e) {
+    e.stopPropagation();
+    var $marker = $(this);
+    var location = $marker.attr("data-location");
+    var $panel = $marker.closest(".experience-panel");
+
+    zoomToLocation(location, $panel);
+  });
+
+  // 리셋 버튼 클릭 이벤트
+  $(document).on("click", ".zoom-reset-btn", function (e) {
+    e.stopPropagation();
+    var $panel = $(this).closest(".experience-panel");
+    resetZoom($panel);
+  });
+
+  // 탭 전환 시 줌 초기화
+  $(document).on("click", ".experience-tab", function () {
+    $(".experience-panel").each(function () {
+      if ($(this).hasClass("active")) {
+        resetZoom($(this));
+      }
+    });
+
+    // 탭이 전환되는 동안 여러 번 업데이트
+    setTimeout(drawConnectionLines, 100);
+    setTimeout(drawConnectionLines, 300);
+    setTimeout(drawConnectionLines, 600);
+  });
+
   // 초기 로드
   setTimeout(function () {
     drawConnectionLines();
@@ -660,14 +771,6 @@ $(document).ready(function () {
     setTimeout(function () {
       drawConnectionLines();
     }, 300);
-  });
-
-  // 탭 전환 시
-  $(document).on("click", ".experience-tab", function () {
-    // 탭이 전환되는 동안 여러 번 업데이트
-    setTimeout(drawConnectionLines, 100);
-    setTimeout(drawConnectionLines, 300);
-    setTimeout(drawConnectionLines, 600);
   });
 
   // 윈도우 리사이즈
