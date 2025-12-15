@@ -1,30 +1,329 @@
-/* Experience Section - Dark Theme */
+/* ==========================================
+   Experience Section - Modern Design
+   ========================================== */
 #experience {
-  background-color: #1a202c;
+  background: #f8fafc;
   padding: 100px 0;
+  position: relative;
+}
+
+/* Header */
+.experience-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.experience-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+  border: 2px solid #6366f1;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  color: #4338ca;
+}
+
+.experience-header .section-heading {
+  font-size: 40px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.experience-header .section-description {
+  font-size: 17px;
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* Experience Tabs */
+.experience-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.experience-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.experience-tab i {
+  font-size: 18px;
+}
+
+.experience-tab:hover {
+  border-color: #6366f1;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.experience-tab.active {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+}
+
+/* Experience Content */
+.experience-content {
+  position: relative;
+  min-height: 400px;
+}
+
+.experience-panel {
+  display: none;
+}
+
+.experience-panel.active {
+  display: block;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Experience Cards */
+.experience-cards {
+  max-width: 900px;
+  margin: 0 auto 48px;
+}
+
+.experience-card {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 24px;
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+  border-color: #6366f1;
+}
+
+.company-logo {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.company-logo i {
+  font-size: 36px;
   color: #ffffff;
 }
 
-#experience .section-heading {
-  color: #10b981;
-  font-size: 36px;
+.company-logo.japan-style {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+}
+
+.experience-info {
+  flex: 1;
+}
+
+.company-name {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.position {
+  font-size: 16px;
+  font-weight: 600;
+  color: #6366f1;
+  margin: 0 0 8px 0;
+}
+
+.period {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 0 16px 0;
+}
+
+.experience-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-details li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.experience-details li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #6366f1;
   font-weight: 700;
+}
+
+/* GitHub Section */
+.github-section {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.github-section:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: #6366f1;
+}
+
+.github-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 24px 0;
+}
+
+.github-title i {
+  font-size: 28px;
+  color: #6366f1;
+}
+
+.github-chart {
+  background: #f8fafc;
+  padding: 24px;
+  border-radius: 12px;
   margin-bottom: 16px;
+  text-align: center;
 }
 
-#experience .section-subheading {
-  color: #d1d5db;
-  font-size: 18px;
-  margin-bottom: 50px;
-}
-
-#experience .text-muted {
-  color: #d1d5db;
-}
-
-#experience .github-chart {
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 20px;
+.github-chart img {
+  max-width: 100%;
+  height: auto;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.github-description {
+  font-size: 15px;
+  color: #64748b;
+  text-align: center;
+  margin: 0;
+}
+
+/* Japan Culture Note */
+.japan-culture-note {
+  background: linear-gradient(135deg, #fef2f2, #fee2e2);
+  border: 2px solid #fca5a5;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.japan-culture-note i {
+  font-size: 28px;
+  color: #dc2626;
+  flex-shrink: 0;
+}
+
+.japan-culture-note p {
+  font-size: 15px;
+  color: #991b1b;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #experience {
+    padding: 70px 0;
+  }
+
+  .experience-header .section-heading {
+    font-size: 32px;
+  }
+
+  .experience-tabs {
+    gap: 8px;
+  }
+
+  .experience-tab {
+    padding: 10px 24px;
+    font-size: 14px;
+  }
+
+  .experience-card {
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .company-logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .company-logo i {
+    font-size: 28px;
+  }
+
+  .company-name {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-tabs {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .experience-tab {
+    width: 100%;
+    justify-content: center;
+  }
 }

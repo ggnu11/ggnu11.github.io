@@ -1,31 +1,172 @@
-<!-- GitHub Contributions Section -->
-<section id="experience" class="bg-light-gray">
+<!-- Experience Section - Modern Design with Tabs -->
+<section id="experience">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">GitHub 기여도</h2>
-        <h3 class="section-subheading text-muted">
-          개발 활동 현황을 한눈에 확인해보세요.
-        </h3>
-      </div>
+    <!-- Header -->
+    <div class="experience-header">
+      <span class="experience-badge">💼 EXPERIENCE</span>
+      <h2 class="section-heading" data-ko="경력" data-jp="経歴">경력</h2>
+      <p
+        class="section-description"
+        data-ko="국내외 다양한 프로젝트 경험"
+        data-jp="国内外の様々なプロジェクト経験"
+      >
+        국내외 다양한 프로젝트 경험
+      </p>
     </div>
-    <div class="row">
-      <div class="col-lg-10 col-lg-offset-1 text-center">
-        <div class="github-chart">
-          <img
-            src="https://ghchart.rshah.org/219138/ggnu11"
-            alt="GitHub 기여도 차트"
-            class="img-responsive github-contributions"
-          />
+
+    <!-- Country Tabs -->
+    <div class="experience-tabs">
+      <button type="button" class="experience-tab active" data-country="korea">
+        <i class="fas fa-flag"></i>
+        <span data-ko="한국" data-jp="韓国">한국</span>
+      </button>
+      <button type="button" class="experience-tab" data-country="japan">
+        <i class="fas fa-flag"></i>
+        <span data-ko="일본" data-jp="日本">일본</span>
+      </button>
+    </div>
+
+    <!-- Experience Content -->
+    <div class="experience-content">
+      <!-- Korea Experience -->
+      <div class="experience-panel active" data-panel="korea">
+        <div class="experience-cards">
+          <div class="experience-card">
+            <div class="company-logo">
+              <i class="fas fa-building"></i>
+            </div>
+            <div class="experience-info">
+              <h3
+                class="company-name"
+                data-ko="아이페이지온"
+                data-jp="アイページオン"
+              >
+                아이페이지온
+              </h3>
+              <p
+                class="position"
+                data-ko="프론트엔드 개발자"
+                data-jp="フロントエンド開発者"
+              >
+                프론트엔드 개발자
+              </p>
+              <p
+                class="period"
+                data-ko="2023.06 - 현재"
+                data-jp="2023.06 - 現在"
+              >
+                2023.06 - 현재
+              </p>
+              <ul class="experience-details">
+                <li
+                  data-ko="통신 솔루션 및 산업용 IoT 솔루션 프론트엔드 개발"
+                  data-jp="通信ソリューション及び産業用IoTソリューションのフロントエンド開発"
+                >
+                  통신 솔루션 및 산업용 IoT 솔루션 프론트엔드 개발
+                </li>
+                <li
+                  data-ko="React 기반 웹 애플리케이션 개발 및 유지보수"
+                  data-jp="Reactベースのウェブアプリケーション開発及び保守"
+                >
+                  React 기반 웹 애플리케이션 개발 및 유지보수
+                </li>
+                <li
+                  data-ko="UI/UX 개선 및 성능 최적화"
+                  data-jp="UI/UX改善及び性能最適化"
+                >
+                  UI/UX 개선 및 성능 최적화
+                </li>
+                <li
+                  data-ko="팀 협업을 통한 프로젝트 진행"
+                  data-jp="チーム協業を通じたプロジェクト進行"
+                >
+                  팀 협업을 통한 프로젝트 진행
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 추가 한국 경력이 있다면 여기에 추가 -->
+        </div>
+
+        <!-- GitHub Contributions -->
+        <div class="github-section">
+          <h3 class="github-title">
+            <i class="fab fa-github"></i>
+            <span data-ko="GitHub 기여도" data-jp="GitHub貢献度"
+              >GitHub 기여도</span
+            >
+          </h3>
+          <div class="github-chart">
+            <img
+              src="https://ghchart.rshah.org/3b82f6/ggnu11"
+              alt="GitHub 기여도 차트"
+            />
+          </div>
+          <p
+            class="github-description"
+            data-ko="지속적인 학습과 개발을 통해 꾸준히 성장하고 있습니다."
+            data-jp="継続的な学習と開発を通じて着実に成長しています。"
+          >
+            지속적인 학습과 개발을 통해 꾸준히 성장하고 있습니다.
+          </p>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 text-center">
-        <p class="large text-muted">
-          지속적인 학습과 개발을 통해 꾸준히 성장하고 있습니다. GitHub에서 더
-          많은 프로젝트를 확인해보세요.
-        </p>
+
+      <!-- Japan Experience -->
+      <div class="experience-panel" data-panel="japan">
+        <div class="experience-cards">
+          <div class="experience-card">
+            <div class="company-logo japan-style">
+              <i class="fas fa-torii-gate"></i>
+            </div>
+            <div class="experience-info">
+              <h3 class="company-name" data-ko="일본 경험" data-jp="日本経験">
+                일본 경험
+              </h3>
+              <p class="position" data-ko="직책/역할" data-jp="役職/役割">
+                직책/역할
+              </p>
+              <p
+                class="period"
+                data-ko="기간을 입력하세요"
+                data-jp="期間を入力してください"
+              >
+                기간을 입력하세요
+              </p>
+              <ul class="experience-details">
+                <li
+                  data-ko="일본에서의 주요 업무 내용 1"
+                  data-jp="日本での主要業務内容1"
+                >
+                  일본에서의 주요 업무 내용 1
+                </li>
+                <li
+                  data-ko="일본에서의 주요 업무 내용 2"
+                  data-jp="日本での主要業務内容2"
+                >
+                  일본에서의 주요 업무 내용 2
+                </li>
+                <li
+                  data-ko="일본에서의 주요 업무 내용 3"
+                  data-jp="日本での主要業務内容3"
+                >
+                  일본에서의 주요 업무 내용 3
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- 추가 일본 경력이 있다면 여기에 추가 -->
+        </div>
+
+        <div class="japan-culture-note">
+          <i class="fas fa-info-circle"></i>
+          <p
+            data-ko="일본에서의 경험을 통해 글로벌 협업 역량을 키웠습니다."
+            data-jp="日本での経験を通じてグローバル協業能力を培いました。"
+          >
+            일본에서의 경험을 통해 글로벌 협업 역량을 키웠습니다.
+          </p>
+        </div>
       </div>
     </div>
   </div>

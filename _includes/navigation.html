@@ -1,30 +1,57 @@
-<!-- Tab Navigation Bar - Sticky (전역) -->
+<!-- Clean Tab Navigation with Language Toggle -->
 <nav class="tab-nav" id="tabNav">
   <div class="container">
-    <div class="tab-nav-content">
-      <div class="nav-dots">
-        <span class="dot dot-blue"></span>
-        <span class="dot dot-yellow"></span>
-        <span class="dot dot-green"></span>
-      </div>
+    <div class="nav-wrapper">
       <ul class="tab-nav-list">
         <li>
-          <a href="#skills" class="page-scroll" data-section="skills">기술</a>
+          <a href="#about" class="page-scroll" data-section="about">
+            <i class="fa fa-user"></i>
+            <span class="nav-text" data-ko="소개" data-jp="紹介">소개</span>
+          </a>
         </li>
         <li>
-          <a href="#about" class="page-scroll" data-section="about">경력</a>
+          <a href="#skills" class="page-scroll" data-section="skills">
+            <i class="fa fa-code"></i>
+            <span class="nav-text" data-ko="기술 스택" data-jp="技術スタック"
+              >기술 스택</span
+            >
+          </a>
         </li>
         <li>
-          <a href="#projects" class="page-scroll" data-section="projects"
-            >프로젝트</a
-          >
+          <a href="#experience" class="page-scroll" data-section="experience">
+            <i class="fa fa-briefcase"></i>
+            <span class="nav-text" data-ko="경력" data-jp="経歴">경력</span>
+          </a>
         </li>
         <li>
-          <a href="#experience" class="page-scroll" data-section="experience"
-            >블로그</a
-          >
+          <a href="#projects" class="page-scroll" data-section="projects">
+            <i class="fa fa-folder-open"></i>
+            <span class="nav-text" data-ko="프로젝트" data-jp="プロジェクト"
+              >프로젝트</span
+            >
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="page-scroll" data-section="contact">
+            <i class="fa fa-envelope"></i>
+            <span class="nav-text" data-ko="연락처" data-jp="お問い合わせ"
+              >연락처</span
+            >
+          </a>
         </li>
       </ul>
+
+      <!-- Language Toggle -->
+      <div class="language-toggle">
+        <button type="button" class="lang-btn active" data-lang="ko">
+          <span class="flag">🇰🇷</span>
+          <span class="lang-code">KR</span>
+        </button>
+        <button type="button" class="lang-btn" data-lang="jp">
+          <span class="flag">🇯🇵</span>
+          <span class="lang-code">JP</span>
+        </button>
+      </div>
     </div>
   </div>
 </nav>

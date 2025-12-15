@@ -1,147 +1,231 @@
-<!-- About Section (경력/소개) -->
+<!-- About Section - Modern Design -->
 <section id="about" class="about-section">
   <div class="container">
-    <!-- Core Competencies Section -->
-    <div class="core-competencies">
-      <h2 class="competencies-title">핵심 역량</h2>
-      <p class="competencies-slogan">유연하게 소통하고 견고하게 개발합니다.</p>
+    <!-- Header -->
+    <div class="about-header">
+      <span class="about-badge">👨‍💻 ABOUT ME</span>
+      <h2 class="section-heading" data-ko="소개" data-jp="紹介">소개</h2>
+      <p
+        class="section-description"
+        data-ko="유연하게 소통하고 견고하게 개발합니다"
+        data-jp="柔軟にコミュニケーションを取り、堅牢に開発します"
+      >
+        유연하게 소통하고 견고하게 개발합니다
+      </p>
     </div>
 
-    <!-- Profile Information Section -->
-    <div class="profile-section">
-      <div class="about-me-container">
-        <h2 class="about-me-title">About Me</h2>
-        <div class="about-me-content">
-          <div class="profile-image-container">
-            <img
-              class="profile-image"
-              src="img/about/profile.jpg"
-              alt="프로필 이미지"
-            />
+    <!-- Profile Card - Trendy Design -->
+    <div class="profile-card">
+      <div class="profile-hero">
+        <div class="profile-avatar">
+          <div class="avatar-circle">
+            <span class="avatar-initial">최</span>
           </div>
-          <div class="personal-info">
-            <div class="info-item">
-              <span class="info-label">이름</span>
-              <span class="info-value">최영훈</span>
+          <div class="status-indicator"></div>
+        </div>
+        <div class="profile-intro">
+          <h3 class="profile-name" data-ko="최영훈" data-jp="チェ ヨンフン">
+            최영훈
+          </h3>
+          <p class="profile-title">Frontend Developer</p>
+          <p
+            class="profile-bio"
+            data-ko="사용자 중심의 웹 서비스를 만들기 위해 새로운 기술을 학습하고 적용하는 데 힘쓰고 있습니다."
+            data-jp="ユーザー中心のウェブサービスを作るために、新しい技術を学習し適用することに力を入れています。"
+          >
+            사용자 중심의 웹 서비스를 만들기 위해 새로운 기술을 학습하고
+            적용하는 데 힘쓰고 있습니다.
+          </p>
+        </div>
+      </div>
+      <div class="profile-details">
+        <div class="detail-item">
+          <i class="fas fa-birthday-cake"></i>
+          <span class="detail-label" data-ko="생년월일" data-jp="生年月日"
+            >생년월일</span
+          >
+          <span class="detail-value">1996.07.12</span>
+        </div>
+        <div class="detail-item">
+          <i class="fas fa-graduation-cap"></i>
+          <span class="detail-label" data-ko="학력" data-jp="学歴">학력</span>
+          <span
+            class="detail-value"
+            data-ko="서울 사이버대학 컴퓨터공학 전공"
+            data-jp="ソウルサイバー大学 コンピュータ工学専攻"
+            >서울 사이버대학 컴퓨터공학 전공</span
+          >
+        </div>
+        <div class="detail-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span class="detail-label" data-ko="지역" data-jp="地域">지역</span>
+          <span class="detail-value" data-ko="서울" data-jp="ソウル">서울</span>
+        </div>
+        <div class="detail-item">
+          <i class="fas fa-envelope"></i>
+          <span class="detail-label" data-ko="이메일" data-jp="メール"
+            >이메일</span
+          >
+          <span class="detail-value" id="email"
+            >choiyounghun0712@gmail.com</span
+          >
+          <button
+            class="copy-btn"
+            onclick="copyEmail()"
+            title="복사"
+            data-ko-title="복사"
+            data-jp-title="コピー"
+          >
+            <i class="fas fa-copy"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Languages & Certifications Grid -->
+    <div class="credentials-grid">
+      <!-- Languages Section -->
+      <div class="credential-card">
+        <div class="credential-header">
+          <i class="fas fa-language"></i>
+          <h3 data-ko="어학" data-jp="語学">어학</h3>
+        </div>
+        <div class="language-list">
+          <div class="language-item">
+            <div class="language-name">
+              <i class="fas fa-circle"></i>
+              <span data-ko="한국어" data-jp="韓国語">한국어</span>
             </div>
-            <div class="info-item">
-              <span class="info-label">생년월일</span>
-              <span class="info-value">1996.07.12</span>
+            <span class="language-level">Native</span>
+          </div>
+          <div class="language-item">
+            <div class="language-name">
+              <i class="fas fa-circle"></i>
+              <span data-ko="영어" data-jp="英語">영어</span>
             </div>
-            <div class="info-item">
-              <span class="info-label">학력</span>
-              <span class="info-value">서울 사이버대학 컴퓨터공학 전공</span>
+            <span class="language-level">Intermediate</span>
+          </div>
+          <!-- 추가 언어가 있다면 여기에 추가 -->
+        </div>
+      </div>
+
+      <!-- Certifications Section -->
+      <div class="credential-card">
+        <div class="credential-header">
+          <i class="fas fa-certificate"></i>
+          <h3 data-ko="자격증" data-jp="資格">자격증</h3>
+        </div>
+        <div class="certification-list">
+          <div class="certification-item">
+            <div class="cert-icon">
+              <i class="fas fa-award"></i>
             </div>
-            <div class="info-item">
-              <span class="info-label">지역</span>
-              <span class="info-value">서울</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">연락처</span>
-              <span class="info-value">010-8934-7661</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">이메일</span>
-              <span class="info-value" id="email"
-                >choiyounghun0712@gmail.com</span
-              >
-              <span class="copy-icon" onclick="copyEmail()" title="복사">
-                📄
-              </span>
+            <div class="cert-info">
+              <h4 data-ko="정보처리기사" data-jp="情報処理技術者">
+                정보처리기사
+              </h4>
+              <p data-ko="한국산업인력공단" data-jp="韓国産業人力公団">
+                한국산업인력공단
+              </p>
+              <span class="cert-date">2023</span>
             </div>
           </div>
+          <!-- 추가 자격증이 있다면 여기에 추가 -->
+          <!-- 예시:
+          <div class="certification-item">
+            <div class="cert-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <div class="cert-info">
+              <h4>자격증 이름</h4>
+              <p>발급 기관</p>
+              <span class="cert-date">년도</span>
+            </div>
+          </div>
+          -->
         </div>
       </div>
     </div>
 
     <!-- Timeline Section -->
-    <div class="timeline-section">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading">소개</h2>
-          <h3 class="section-subheading text-muted">
-            프론트엔드 개발자로 성장해온 여정을 소개합니다.
-          </h3>
+    <div class="timeline-wrapper">
+      <div class="timeline-header">
+        <h3 data-ko="커리어 타임라인" data-jp="キャリアタイムライン">
+          커리어 타임라인
+        </h3>
+        <p
+          data-ko="프론트엔드 개발자로 성장해온 여정"
+          data-jp="フロントエンド開発者として成長してきた旅"
+        >
+          프론트엔드 개발자로 성장해온 여정
+        </p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div
+              class="timeline-date"
+              data-ko="2022년 12월"
+              data-jp="2022年12月"
+            >
+              2022년 12월
+            </div>
+            <h4
+              data-ko="국비 지원 풀스택 개발 과정 수료"
+              data-jp="国費支援フルスタック開発課程修了"
+            >
+              국비 지원 풀스택 개발 과정 수료
+            </h4>
+            <p
+              data-ko="6개월간의 국비 IT 교육을 통해 HTML, CSS, JavaScript를 기반으로 웹 개발을 본격적으로 시작했습니다. 사용자 경험을 고려한 UI/UX 설계와 구현에 집중하며, 개발의 기초를 탄탄히 다졌습니다."
+              data-jp="6ヶ月間の国費IT教育を通じて、HTML、CSS、JavaScriptを基盤としてウェブ開発を本格的に始めました。ユーザー体験を考慮したUI/UX設計と実装に集中し、開発の基礎をしっかりと築きました。"
+            >
+              6개월간의 국비 IT 교육을 통해 HTML, CSS, JavaScript를 기반으로 웹
+              개발을 본격적으로 시작했습니다. 사용자 경험을 고려한 UI/UX 설계와
+              구현에 집중하며, 개발의 기초를 탄탄히 다졌습니다.
+            </p>
+          </div>
         </div>
-        <div class="col-lg-12">
-          <ul class="timeline">
-            <li>
-              <div class="timeline-image">
-                <img
-                  class="img-circle img-responsive"
-                  src="img/about/1.jpg"
-                  alt="시작"
-                />
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4>2022년 12월</h4>
-                  <h4 class="subheading">국비 지원 풀스택 개발 과정 수료</h4>
-                </div>
-                <div class="timeline-body">
-                  <p class="text-muted">
-                    6개월간의 국비 IT 교육을 통해 HTML, CSS, JavaScript를
-                    기반으로 웹 개발을 본격적으로 시작했습니다. 사용자 경험을
-                    고려한 UI/UX 설계와 구현에 집중하며, 개발의 기초를 탄탄히
-                    다졌습니다.
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="timeline-inverted">
-              <div class="timeline-image">
-                <img
-                  class="img-circle img-responsive"
-                  src="img/about/2.jpg"
-                  alt="회사"
-                />
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4>2023년 6월</h4>
-                  <h4 class="subheading">
-                    아이페이지온 프론트엔드 개발자 입사
-                  </h4>
-                </div>
-                <div class="timeline-body">
-                  <p class="text-muted">
-                    통신 솔루션과 산업용 IoT 솔루션을 제공하는 아이페이지온에
-                    프론트엔드 개발자로 입사하여 다양한 프로젝트에 참여하고
-                    있습니다. 기존 코드 유지보수부터 성능 개선, UI 개선 작업을
-                    통해 협업과 실무 경험을 쌓아가고 있습니다.
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="timeline-image">
-                <img
-                  class="img-circle img-responsive"
-                  src="img/about/3.jpg"
-                  alt="성장"
-                />
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4>현재</h4>
-                  <h4 class="subheading">지속적인 성장과 도전</h4>
-                </div>
-                <div class="timeline-body">
-                  <p class="text-muted">
-                    다양한 환경에서의 실무 경험을 바탕으로, 사용자 중심의 웹
-                    서비스를 만들기 위해 새로운 기술을 학습하고 적용하는 데
-                    힘쓰고 있습니다. 더 나은 코드, 더 나은 사용자 경험을 위해
-                    끊임없이 도전하고 있습니다.
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="timeline-inverted">
-              <div class="timeline-image">
-                <h4>함께 <br />더 나은 <br />웹을 만듭시다!</h4>
-              </div>
-            </li>
-          </ul>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date" data-ko="2023년 6월" data-jp="2023年6月">
+              2023년 6월
+            </div>
+            <h4
+              data-ko="아이페이지온 프론트엔드 개발자 입사"
+              data-jp="アイページオン フロントエンド開発者入社"
+            >
+              아이페이지온 프론트엔드 개발자 입사
+            </h4>
+            <p
+              data-ko="통신 솔루션과 산업용 IoT 솔루션을 제공하는 아이페이지온에 프론트엔드 개발자로 입사하여 다양한 프로젝트에 참여하고 있습니다. 기존 코드 유지보수부터 성능 개선, UI 개선 작업을 통해 협업과 실무 경험을 쌓아가고 있습니다."
+              data-jp="通信ソリューションと産業用IoTソリューションを提供するアイページオンにフロントエンド開発者として入社し、様々なプロジェクトに参加しています。既存コードの保守から性能改善、UI改善作業を通じて、協業と実務経験を積み重ねています。"
+            >
+              통신 솔루션과 산업용 IoT 솔루션을 제공하는 아이페이지온에
+              프론트엔드 개발자로 입사하여 다양한 프로젝트에 참여하고 있습니다.
+              기존 코드 유지보수부터 성능 개선, UI 개선 작업을 통해 협업과 실무
+              경험을 쌓아가고 있습니다.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-date" data-ko="현재" data-jp="現在">현재</div>
+            <h4 data-ko="지속적인 성장과 도전" data-jp="持続的な成長と挑戦">
+              지속적인 성장과 도전
+            </h4>
+            <p
+              data-ko="다양한 환경에서의 실무 경험을 바탕으로, 사용자 중심의 웹 서비스를 만들기 위해 새로운 기술을 학습하고 적용하는 데 힘쓰고 있습니다. 더 나은 코드, 더 나은 사용자 경험을 위해 끊임없이 도전하고 있습니다."
+              data-jp="様々な環境での実務経験を基に、ユーザー中心のウェブサービスを作るために新しい技術を学習し適用することに力を入れています。より良いコード、より良いユーザー体験のために絶えず挑戦しています。"
+            >
+              다양한 환경에서의 실무 경험을 바탕으로, 사용자 중심의 웹 서비스를
+              만들기 위해 새로운 기술을 학습하고 적용하는 데 힘쓰고 있습니다. 더
+              나은 코드, 더 나은 사용자 경험을 위해 끊임없이 도전하고 있습니다.
+            </p>
+          </div>
         </div>
       </div>
     </div>

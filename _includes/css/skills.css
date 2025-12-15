@@ -1,105 +1,243 @@
-/* 스킬 섹션 스타일 */
+/* ==========================================
+   Skills Section - Tabbed Interface
+   ========================================== */
+
 #skills {
-  background-color: #1a202c;
+  background: #ffffff;
   padding: 100px 0;
+  position: relative;
+}
+
+#skills .container {
+  max-width: 1200px;
+}
+
+/* Header */
+.skills-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.skills-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+  border: 2px solid #3b82f6;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  color: #1e40af;
+}
+
+.skills-header .section-heading {
+  font-size: 40px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.skills-header .section-description {
+  font-size: 17px;
+  color: #64748b;
+  font-weight: 400;
+}
+
+/* Tabs */
+.skills-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.skill-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
-#skills::before {
+.skill-tab::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="20" fill="none" stroke="%23374151" stroke-width="1"/></svg>');
-  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
   z-index: 0;
 }
 
-#skills .container {
+.skill-tab i,
+.skill-tab span {
   position: relative;
   z-index: 1;
 }
 
-/* 섹션 제목 스타일 */
-#skills .section-heading {
-  font-size: 36px;
-  font-weight: 700;
-  margin: 20px 0 80px;
-  color: #10b981;
-}
-
-#skills .section-subheading {
-  margin-bottom: 50px;
-  font-size: 16px;
-}
-
-/* 아이콘 스타일 */
-.skill-icon-wrapper {
-  margin-bottom: 20px;
-  transition: transform 0.3s ease;
-}
-
-.col-md-4:hover .skill-icon-wrapper {
-  transform: scale(1.05);
-}
-
-.text-primary {
-  color: #fed136 !important;
-}
-
-/* 스킬 태그 스타일 */
-.skill-tags {
-  margin: 30px 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-}
-
-.skill-tag {
-  display: inline-block;
-  background: linear-gradient(135deg, #fed136, #ff9d00);
-  color: white;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  box-shadow: 0 2px 5px rgba(254, 209, 54, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.skill-tag:hover {
+.skill-tab:hover {
+  border-color: #3b82f6;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(254, 209, 54, 0.4);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
 }
 
-/* 서비스 제목 스타일 */
-.service-heading {
-  font-size: 22px;
-  margin: 15px 0;
-  font-weight: 700;
+.skill-tab.active {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
+}
+
+.skill-tab i {
+  font-size: 18px;
+}
+
+/* Skills Content */
+.skills-content {
+  position: relative;
+  min-height: 400px;
+}
+
+.skills-panel {
+  display: none;
+}
+
+.skills-panel.active {
+  display: block;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tech Grid */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Tech Item */
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 16px;
+  background: #ffffff;
+  border: 2px solid #f1f5f9;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+}
+
+.tech-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border-color: #e2e8f0;
+}
+
+/* Tech Icon */
+.tech-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.tech-item:hover .tech-icon {
+  transform: scale(1.1) rotate(3deg);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.tech-icon i {
+  font-size: 32px;
   color: #ffffff;
 }
 
-#skills .text-muted {
-  color: #d1d5db;
+/* Tech Name */
+.tech-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  text-align: center;
+  line-height: 1.4;
 }
 
-/* 애니메이션 */
-.fa-spin-slow {
-  animation: fa-spin 8s infinite linear;
-}
-
-/* 반응형 스타일 */
+/* Responsive */
 @media (max-width: 768px) {
   #skills {
     padding: 70px 0;
   }
 
-  .skill-tags {
-    margin: 10px 0;
+  .skills-header .section-heading {
+    font-size: 32px;
+  }
+
+  .skills-tabs {
+    gap: 8px;
+  }
+
+  .skill-tab {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 16px;
+  }
+
+  .tech-item {
+    padding: 20px 12px;
+  }
+
+  .tech-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .tech-icon i {
+    font-size: 28px;
+  }
+
+  .tech-name {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
   }
 }

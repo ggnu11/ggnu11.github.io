@@ -1,70 +1,252 @@
-<!-- Skills Section -->
+<!-- Skills Section - Tabbed Interface -->
 <section id="skills">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">기술 스택</h2>
-      </div>
+    <div class="skills-header">
+      <span class="skills-badge">💻 TECH STACK</span>
+      <h2 class="section-heading" data-ko="기술 스택" data-jp="技術スタック">
+        기술 스택
+      </h2>
+      <p
+        class="section-description"
+        data-ko="실무에서 활용하는 기술들을 확인하세요"
+        data-jp="実務で活用している技術を確認してください"
+      >
+        실무에서 활용하는 기술들을 확인하세요
+      </p>
     </div>
-    <div class="row text-center">
-      <!-- 핵심 기술 -->
-      <div class="col-md-4">
-        <span class="fa-stack fa-4x skill-icon-wrapper">
-          <i class="fa fa-circle fa-stack-2x text-primary"></i>
-          <i class="fab fa-react fa-stack-1x fa-inverse fa-spin-slow"></i>
-        </span>
-        <h4 class="service-heading">React 생태계</h4>
-        <div class="skill-tags">
-          <span class="skill-tag">React</span>
-          <span class="skill-tag">React-Router</span>
-          <span class="skill-tag">React-Helmet</span>
-          <span class="skill-tag">React-Hook-Form</span>
+
+    <!-- Category Tabs -->
+    <div class="skills-tabs">
+      <button type="button" class="skill-tab active" data-category="frontend">
+        <i class="fas fa-laptop-code"></i>
+        <span>Frontend</span>
+      </button>
+      <button type="button" class="skill-tab" data-category="styling">
+        <i class="fas fa-palette"></i>
+        <span>Styling</span>
+      </button>
+      <button type="button" class="skill-tab" data-category="tools">
+        <i class="fas fa-tools"></i>
+        <span>Tools</span>
+      </button>
+    </div>
+
+    <!-- Skills Content -->
+    <div class="skills-content">
+      <!-- Frontend -->
+      <div class="skills-panel active" data-panel="frontend">
+        <div class="tech-grid">
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #61dafb, #4fa8c5)"
+            >
+              <i class="fab fa-react"></i>
+            </div>
+            <span class="tech-name">React</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #3178c6, #235a97)"
+            >
+              <i class="fab fa-js"></i>
+            </div>
+            <span class="tech-name">TypeScript</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #000000, #333333)"
+            >
+              <i class="fas fa-arrow-right"></i>
+            </div>
+            <span class="tech-name">Next.js</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #f7df1e, #d4bc00)"
+            >
+              <i class="fab fa-js-square"></i>
+            </div>
+            <span class="tech-name">JavaScript</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #e34f26, #c73b1a)"
+            >
+              <i class="fab fa-html5"></i>
+            </div>
+            <span class="tech-name">HTML5</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #264de4, #1e3a8a)"
+            >
+              <i class="fab fa-css3-alt"></i>
+            </div>
+            <span class="tech-name">CSS3</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #3b82f6, #2563eb)"
+            >
+              <i class="fas fa-atom"></i>
+            </div>
+            <span class="tech-name">Recoil</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #764abc, #5a2d8f)"
+            >
+              <i class="fas fa-layer-group"></i>
+            </div>
+            <span class="tech-name">Redux</span>
+          </div>
         </div>
-        <p class="text-muted">
-          컴포넌트 기반 UI 라이브러리인 React와 함께, React-Router, Hook-Form 등
-          다양한 리액트 생태계의 라이브러리를 활용한 SPA 개발 경험을 보유하고
-          있습니다.
-        </p>
       </div>
 
-      <!-- 상태 관리 및 스타일링 -->
-      <div class="col-md-4">
-        <span class="fa-stack fa-4x skill-icon-wrapper">
-          <i class="fa fa-circle fa-stack-2x text-primary"></i>
-          <i class="fas fa-code fa-stack-1x fa-inverse"></i>
-        </span>
-        <h4 class="service-heading">상태 관리 & 스타일링</h4>
-        <div class="skill-tags">
-          <span class="skill-tag">TypeScript</span>
-          <span class="skill-tag">Recoil</span>
-          <span class="skill-tag">styled-components</span>
-          <span class="skill-tag">react-i18next</span>
+      <!-- Styling -->
+      <div class="skills-panel" data-panel="styling">
+        <div class="tech-grid">
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #db7093, #c94374)"
+            >
+              <i class="fas fa-paint-brush"></i>
+            </div>
+            <span class="tech-name">Styled Components</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #38bdf8, #0ea5e9)"
+            >
+              <i class="fas fa-wind"></i>
+            </div>
+            <span class="tech-name">Tailwind CSS</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #cc6699, #a3527a)"
+            >
+              <i class="fab fa-sass"></i>
+            </div>
+            <span class="tech-name">Sass/SCSS</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #06b6d4, #0891b2)"
+            >
+              <i class="fas fa-code"></i>
+            </div>
+            <span class="tech-name">CSS Modules</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #10b981, #059669)"
+            >
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <span class="tech-name">Responsive Design</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #f59e0b, #d97706)"
+            >
+              <i class="fas fa-magic"></i>
+            </div>
+            <span class="tech-name">Animation</span>
+          </div>
         </div>
-        <p class="text-muted">
-          TypeScript의 정적 타입 시스템과 함께 Recoil을 활용한 상태 관리,
-          styled-components를 통한 컴포넌트 기반 스타일링, 다국어 지원을 위한
-          i18next 활용 경험이 있습니다.
-        </p>
       </div>
 
-      <!-- 데이터 시각화 -->
-      <div class="col-md-4">
-        <span class="fa-stack fa-4x skill-icon-wrapper">
-          <i class="fa fa-circle fa-stack-2x text-primary"></i>
-          <i class="fas fa-chart-line fa-stack-1x fa-inverse"></i>
-        </span>
-        <h4 class="service-heading">데이터 시각화</h4>
-        <div class="skill-tags">
-          <span class="skill-tag">Chart.js</span>
-          <span class="skill-tag">ECharts</span>
-          <span class="skill-tag">ReactFlow</span>
-          <span class="skill-tag">react-chartjs-2</span>
+      <!-- Tools -->
+      <div class="skills-panel" data-panel="tools">
+        <div class="tech-grid">
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #f05032, #c9371f)"
+            >
+              <i class="fab fa-git-alt"></i>
+            </div>
+            <span class="tech-name">Git</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #181717, #000000)"
+            >
+              <i class="fab fa-github"></i>
+            </div>
+            <span class="tech-name">GitHub</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #8dd6f9, #5ab3d6)"
+            >
+              <i class="fas fa-cube"></i>
+            </div>
+            <span class="tech-name">Webpack</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #646cff, #535bf2)"
+            >
+              <i class="fas fa-bolt"></i>
+            </div>
+            <span class="tech-name">Vite</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #ff6384, #ff4069)"
+            >
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <span class="tech-name">Chart.js</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #5470c6, #3b5998)"
+            >
+              <i class="fas fa-chart-area"></i>
+            </div>
+            <span class="tech-name">ECharts</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #0ea5e9, #0284c7)"
+            >
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <span class="tech-name">ReactFlow</span>
+          </div>
+          <div class="tech-item">
+            <div
+              class="tech-icon"
+              style="background: linear-gradient(135deg, #8b5cf6, #7c3aed)"
+            >
+              <i class="fas fa-language"></i>
+            </div>
+            <span class="tech-name">i18next</span>
+          </div>
         </div>
-        <p class="text-muted">
-          Chart.js, ECharts 등 다양한 차트 라이브러리를 활용한 데이터 시각화
-          경험을 보유하고 있으며, ReactFlow를 통한 다이어그램 및 워크플로우
-          시각화에 능숙합니다.
-        </p>
       </div>
     </div>
   </div>

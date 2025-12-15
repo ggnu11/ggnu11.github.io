@@ -1,39 +1,64 @@
-<!-- Portfolio Grid Section -->
+<!-- Projects Section - Modern Design -->
 <section id="projects">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Portfolio</h2>
-        <h3 class="section-subheading text-muted">
-          Lorem ipsum dolor sit amet consectetur.
-        </h3>
-      </div>
+    <!-- Header -->
+    <div class="projects-header">
+      <span class="projects-badge">💼 PORTFOLIO</span>
+      <h2 class="section-heading" data-ko="프로젝트" data-jp="プロジェクト">
+        프로젝트
+      </h2>
+      <p
+        class="section-description"
+        data-ko="실제 개발하고 배포한 프로젝트들을 확인하세요"
+        data-jp="実際に開発し、デプロイしたプロジェクトを確認してください"
+      >
+        실제 개발하고 배포한 프로젝트들을 확인하세요
+      </p>
     </div>
-    <div class="row portfolio-grid">
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
       {% for post in site.posts %}
-      <div class="col-md-4 col-sm-6 portfolio-item">
+      <div class="project-card">
         <a
           href="#portfolioModal{{ post.modal-id }}"
-          class="portfolio-link"
+          class="project-link"
           data-toggle="modal"
         >
-          <div class="thumbnail-container">
+          <!-- Project Image -->
+          <div class="project-image">
             <img
               src="img/portfolio/{{ post.thumbnail }}"
-              class="img-responsive"
               alt="{{ post.alt }}"
             />
+            <div class="project-overlay">
+              <div class="project-overlay-content">
+                <i class="fas fa-search-plus"></i>
+                <span data-ko="자세히 보기" data-jp="詳細を見る"
+                  >자세히 보기</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Info -->
+          <div class="project-info">
+            {% if post.category %}
+            <span class="project-category">{{ post.category }}</span>
+            {% endif %}
+            <h3 class="project-title">{{ post.title }}</h3>
+            <p class="project-subtitle">{{ post.subtitle }}</p>
+
+            <!-- Tech Stack Badges -->
+            {% if post.tech %}
+            <div class="project-tech">
+              {% for tech in post.tech %}
+              <span class="tech-tag">{{ tech }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
           </div>
         </a>
-        <div class="portfolio-caption">
-          <h4>{{ post.title }}</h4>
-          <p class="text-muted">{{ post.subtitle }}</p>
-          {% if post.category %}
-          <div class="portfolio-category">
-            <span>{{ post.category }}</span>
-          </div>
-          {% endif %}
-        </div>
       </div>
       {% endfor %}
     </div>

@@ -1,97 +1,85 @@
+<!-- Contact Section - Modern Cards -->
 <section id="contact">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">문의하기</h2>
-        <h3 class="section-subheading text-muted">
-          프로젝트 협업이나 개발 관련 문의사항이 있으시면 언제든지 연락주세요.
-        </h3>
-      </div>
+    <div class="contact-header">
+      <span class="contact-badge">CONTACT</span>
+      <h2 class="section-heading" data-ko="연락하기" data-jp="お問い合わせ">
+        연락하기
+      </h2>
+      <p
+        class="section-description"
+        data-ko="새로운 프로젝트나 협업 기회에 대해 이야기 나누고 싶습니다"
+        data-jp="新しいプロジェクトや協業の機会について話し合いたいです"
+      >
+        새로운 프로젝트나 협업 기회에 대해 이야기 나누고 싶습니다
+      </p>
     </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <form name="sentMessage" id="contactForm" novalidate>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="control-group form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="이름 *"
-                  id="name"
-                  required
-                  data-validation-required-message="이름을 입력해주세요."
-                />
-                <p class="help-block text-danger"></p>
-              </div>
-              <div class="control-group form-group">
-                <input
-                  type="email"
-                  class="form-control"
-                  placeholder="이메일 주소 *"
-                  id="email"
-                  required
-                  data-validation-required-message="이메일 주소를 입력해주세요."
-                />
-                <p class="help-block text-danger"></p>
-              </div>
-              <div class="control-group form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="제목 *"
-                  id="subject"
-                  required
-                  data-validation-required-message="제목을 입력해주세요."
-                />
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="control-group form-group">
-                <textarea
-                  class="form-control"
-                  placeholder="메시지 *"
-                  id="message"
-                  required
-                  data-validation-required-message="메시지를 입력해주세요."
-                ></textarea>
-                <p class="help-block text-danger"></p>
-              </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-lg-12 text-center">
-              <div id="success"></div>
-              <button type="submit" class="btn btn-xl">메시지 보내기</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <!-- Contact Info Section -->
-    <div class="row" style="margin-top: 60px">
-      <div class="col-lg-12 text-center">
-        <div class="contact-info">
-          <div
-            style="
-              background: rgba(255, 255, 255, 0.1);
-              border-radius: 10px;
-              padding: 30px;
-              display: inline-block;
-              margin: 20px;
-            "
-          >
-            <i
-              class="fa fa-envelope fa-2x"
-              style="color: #fed136; margin-bottom: 15px"
-            ></i>
-            <h4 style="color: white; margin-bottom: 10px">이메일</h4>
-            <p style="color: rgba(255, 255, 255, 0.8); margin: 0">
-              choiyounghun0712@gmail.com
-            </p>
-          </div>
+
+    <div class="contact-grid">
+      <!-- Email Card -->
+      <a href="mailto:choiyounghun0712@gmail.com" class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
         </div>
-      </div>
+        <h3 class="contact-title">Email</h3>
+        <p class="contact-info">choiyounghun0712@gmail.com</p>
+        <span class="contact-action">
+          <span data-ko="메일 보내기" data-jp="メールを送る">메일 보내기</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </a>
+
+      <!-- GitHub Card -->
+      <a href="https://github.com/ggnu11" target="_blank" class="contact-card">
+        <div class="contact-icon">
+          <i class="fab fa-github"></i>
+        </div>
+        <h3 class="contact-title">GitHub</h3>
+        <p class="contact-info">github.com/ggnu11</p>
+        <span class="contact-action">
+          <span data-ko="프로필 보기" data-jp="プロフィールを見る"
+            >프로필 보기</span
+          >
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </a>
+
+      <!-- Phone Card -->
+      <a href="tel:010-8934-7661" class="contact-card">
+        <div class="contact-icon">
+          <i class="fas fa-phone"></i>
+        </div>
+        <h3 class="contact-title">Phone</h3>
+        <p class="contact-info">010-8934-7661</p>
+        <span class="contact-action">
+          <span data-ko="전화하기" data-jp="電話をかける">전화하기</span>
+          <i class="fas fa-arrow-right"></i>
+        </span>
+      </a>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="contact-cta">
+      <h3
+        class="cta-title"
+        data-ko="함께 일하고 싶으신가요?"
+        data-jp="一緒に働きませんか？"
+      >
+        함께 일하고 싶으신가요?
+      </h3>
+      <p
+        class="cta-description"
+        data-ko="언제든지 연락 주시면 빠르게 답변드리겠습니다"
+        data-jp="いつでも連絡いただければ迅速に返信いたします"
+      >
+        언제든지 연락 주시면 빠르게 답변드리겠습니다
+      </p>
+      <a href="mailto:choiyounghun0712@gmail.com" class="cta-button">
+        <i class="fas fa-paper-plane"></i>
+        <span data-ko="이메일 보내기" data-jp="メールを送る"
+          >이메일 보내기</span
+        >
+      </a>
     </div>
   </div>
 </section>
