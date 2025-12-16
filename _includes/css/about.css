@@ -837,17 +837,88 @@
   border-radius: 8px;
 }
 
-/* Birthday Card */
-.birthday-display {
-  text-align: center;
-  padding: 12px 0;
+/* Birthday Card - Calendar Style */
+.birthday-calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
 }
 
-.birthday-value {
-  font-size: 24px;
-  font-weight: 800;
+.calendar-month {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  border-radius: 12px 12px 0 0;
+  color: white;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.month-name {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.year-name {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.calendar-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  padding: 16px 0;
+  background: linear-gradient(135deg, #f8fafc, #ffffff);
+  border: 2px solid #e2e8f0;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  position: relative;
+}
+
+.calendar-day::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #cbd5e1,
+    #cbd5e1,
+    transparent
+  );
+}
+
+.day-number {
+  font-size: 48px;
+  font-weight: 900;
   color: #1e293b;
-  letter-spacing: 0.02em;
+  line-height: 1;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.day-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 /* Skills Card */
@@ -1658,5 +1729,17 @@
 
   .credential-card {
     padding: 24px 20px;
+  }
+
+  .day-number {
+    font-size: 40px;
+  }
+
+  .month-name {
+    font-size: 14px;
+  }
+
+  .year-name {
+    font-size: 12px;
   }
 }

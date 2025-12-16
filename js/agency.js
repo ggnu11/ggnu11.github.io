@@ -80,6 +80,155 @@ $("div.modal").on("show.bs.modal", function () {
   };
 });
 
+// 포트폴리오 모달 즉시 표시 (애니메이션 제거)
+$(".portfolio-modal").on("show.bs.modal", function (e) {
+  var $modal = $(this);
+
+  console.log("Modal show event triggered for:", $modal.attr("id"));
+
+  // body 스크롤 잠금
+  $("body").css({
+    overflow: "hidden",
+    paddingRight: getScrollbarWidth() + "px",
+  });
+
+  // 모달과 백드롭을 즉시 표시
+  setTimeout(function () {
+    $modal.addClass("in").show().css({
+      display: "flex",
+    });
+
+    // 백드롭 생성 및 표시
+    var $backdrop = $(".modal-backdrop");
+    if ($backdrop.length === 0) {
+      $("body").append('<div class="modal-backdrop fade in"></div>');
+      $backdrop = $(".modal-backdrop");
+    }
+    $backdrop.addClass("in").css({
+      opacity: "0.75",
+      display: "block",
+    });
+
+    console.log("Modal displayed:", $modal.css("display"));
+  }, 0);
+});
+
+// 포트폴리오 모달 즉시 닫기 (애니메이션 제거)
+$(".portfolio-modal").on("hide.bs.modal", function () {
+  var $modal = $(this);
+  var $backdrop = $(".modal-backdrop");
+
+  console.log("Modal hide event triggered");
+
+  // fade 클래스 임시 제거하여 애니메이션 없이 즉시 닫기
+  $modal.removeClass("fade");
+  $backdrop.removeClass("fade");
+
+  // 모달이 완전히 닫힌 후 fade 클래스 복원
+  $modal.one("hidden.bs.modal", function () {
+    $modal.addClass("fade");
+
+    // 백드롭 제거
+    $(".modal-backdrop").remove();
+
+    // body 스크롤 복원
+    $("body").css({
+      overflow: "",
+      paddingRight: "",
+    });
+
+    console.log("Modal hidden and cleaned up");
+  });
+});
+
+// 스크롤바 너비 계산 함수
+function getScrollbarWidth() {
+  var outer = document.createElement("div");
+  outer.style.visibility = "hidden";
+  outer.style.overflow = "scroll";
+  outer.style.msOverflowStyle = "scrollbar";
+  document.body.appendChild(outer);
+
+  var inner = document.createElement("div");
+  outer.appendChild(inner);
+
+  var scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+  outer.parentNode.removeChild(outer);
+
+  return scrollbarWidth;
+}
+
+// ESC 키로 모달 닫기
+$(document).on("keydown", function (e) {
+  if (e.key === "Escape" || e.keyCode === 27) {
+    $(".portfolio-modal.in").modal("hide");
+  }
+});
+
+// Overlay 클릭으로 모달 닫기
+$(".portfolio-modal").on("click", function (e) {
+  if ($(e.target).hasClass("portfolio-modal")) {
+    $(this).modal("hide");
+  }
+});
+
+// 프로젝트 이미지 캐러셀 기능
+function moveCarousel(button, direction) {
+  var $carousel = $(button).closest(".project-carousel");
+  var $slides = $carousel.find(".carousel-slide");
+  var $indicators = $carousel.find(".indicator");
+  var currentIndex = $slides.filter(".active").index();
+  var nextIndex = currentIndex + direction;
+
+  // 순환 처리
+  if (nextIndex < 0) {
+    nextIndex = $slides.length - 1;
+  } else if (nextIndex >= $slides.length) {
+    nextIndex = 0;
+  }
+
+  // 슬라이드 전환
+  $slides.removeClass("active");
+  $slides.eq(nextIndex).addClass("active");
+
+  // 인디케이터 업데이트
+  $indicators.removeClass("active");
+  $indicators.eq(nextIndex).addClass("active");
+}
+
+function goToSlide(indicator, index) {
+  var $carousel = $(indicator).closest(".project-carousel");
+  var $slides = $carousel.find(".carousel-slide");
+  var $indicators = $carousel.find(".indicator");
+
+  // 슬라이드 전환
+  $slides.removeClass("active");
+  $slides.eq(index).addClass("active");
+
+  // 인디케이터 업데이트
+  $indicators.removeClass("active");
+  $indicators.eq(index).addClass("active");
+}
+
+// 프로젝트 모달 탭 전환
+function switchProjectTab(button, tabName) {
+  var $modal = $(button).closest(".portfolio-modal");
+  var $tabButtons = $modal.find(".tab-btn");
+  var $tabContents = $modal.find(".tab-content");
+
+  // 모든 탭 버튼 비활성화
+  $tabButtons.removeClass("active");
+
+  // 클릭한 탭 버튼 활성화
+  $(button).addClass("active");
+
+  // 모든 탭 콘텐츠 숨기기
+  $tabContents.removeClass("active");
+
+  // 선택한 탭 콘텐츠 표시
+  $modal.find('.tab-content[data-tab="' + tabName + '"]').addClass("active");
+}
+
 // Tab Navigation - IntersectionObserver로 active 탭 표시
 $(document).ready(function () {
   var $tabNav = $("#tabNav");
@@ -896,8 +1045,8 @@ $(document).ready(function () {
   });
 
   // Experience Modal functionality
-  var $modal = $("#experienceModal");
-  var $modalBody = $modal.find(".modal-body");
+  var $experienceModal = $("#experienceModal");
+  var $experienceModalBody = $experienceModal.find(".experience-modal-body");
 
   // info-block 클릭 시 모달 열기
   $(document).on("click", ".info-block", function (e) {
@@ -907,33 +1056,33 @@ $(document).ready(function () {
     var $category = $block.find(".info-category").clone();
 
     // 모달에 내용 삽입
-    $modalBody.empty().append($category);
+    $experienceModalBody.empty().append($category);
 
     // 모달 열기
-    $modal.addClass("active");
+    $experienceModal.addClass("active");
     $("body").css("overflow", "hidden");
   });
 
   // 모달 닫기 버튼
-  $modal.find(".modal-close").on("click", function () {
-    closeModal();
+  $experienceModal.find(".experience-modal-close").on("click", function () {
+    closeExperienceModal();
   });
 
   // 오버레이 클릭 시 모달 닫기
-  $modal.find(".modal-overlay").on("click", function () {
-    closeModal();
+  $experienceModal.find(".experience-modal-overlay").on("click", function () {
+    closeExperienceModal();
   });
 
   // ESC 키로 모달 닫기
   $(document).on("keydown", function (e) {
-    if (e.key === "Escape" && $modal.hasClass("active")) {
-      closeModal();
+    if (e.key === "Escape" && $experienceModal.hasClass("active")) {
+      closeExperienceModal();
     }
   });
 
   // 모달 닫기 함수
-  function closeModal() {
-    $modal.removeClass("active");
+  function closeExperienceModal() {
+    $experienceModal.removeClass("active");
     $("body").css("overflow", "");
   }
 });

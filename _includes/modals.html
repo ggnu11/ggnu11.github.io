@@ -7,87 +7,181 @@
   role="dialog"
   aria-hidden="true"
 >
-  <div class="modal-content">
-    <div class="close-modal" data-dismiss="modal">
-      <div class="lr">
-        <div class="rl"></div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Sticky Header -->
+      <div class="modal-header">
+        <h2 class="modal-title">{{ post.title }}</h2>
+        <button
+          type="button"
+          class="modal-close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="modal-body">
-            <h2>{{ post.title }}</h2>
-            <hr class="star-primary" />
-            <img
-              src="img/portfolio/{{ post.img }}"
-              class="img-responsive img-centered"
-              alt="{{ post.alt }}"
-            />
 
-            <!-- Improved description section with better formatting -->
-            <div class="project-description">
-              {{ post.description | markdownify }} {% if post.tech-stack %}
-              <div class="tech-stack-section">
-                <h4>기술 스택</h4>
-                <div class="modern-tech-stack">
-                  {% for tech in post.tech-stack %}
-                  <a
-                    href="#"
-                    class="tech-badge"
-                    data-tech="{{ tech | downcase }}"
-                    onclick="openTechSite('{{ tech | downcase }}'); return false;"
-                    >{{ tech }}</a
-                  >
-                  {% endfor %}
-                </div>
+      <!-- Scrollable Body -->
+      <div class="modal-body">
+        <!-- Project Image Section -->
+        {% if post.images %}
+        <!-- Multiple Images Carousel -->
+        <div class="project-image-section project-carousel">
+          <div class="carousel-container">
+            {% for image in post.images %}
+            <div class="carousel-slide {% if forloop.first %}active{% endif %}">
+              <img
+                src="img/portfolio/{{ image }}"
+                class="project-detail-image"
+                alt="{{ post.title }} - 이미지 {{ forloop.index }}"
+              />
+            </div>
+            {% endfor %}
+          </div>
+          {% if post.images.size > 1 %}
+          <button class="carousel-btn prev" onclick="moveCarousel(this, -1)">
+            <i class="fa fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn next" onclick="moveCarousel(this, 1)">
+            <i class="fa fa-chevron-right"></i>
+          </button>
+          <div class="carousel-indicators">
+            {% for image in post.images %}
+            <span
+              class="indicator {% if forloop.first %}active{% endif %}"
+              onclick="goToSlide(this, {{ forloop.index0 }})"
+            ></span>
+            {% endfor %}
+          </div>
+          {% endif %}
+        </div>
+        {% elsif post.img %}
+        <!-- Single Image -->
+        <div class="project-image-section">
+          <img
+            src="img/portfolio/{{ post.img }}"
+            class="project-detail-image"
+            alt="{{ post.alt }}"
+          />
+        </div>
+        {% endif %}
+
+        <!-- Project Info -->
+        <div class="project-info-section">
+          <!-- Project Meta -->
+          <div class="project-meta">
+            <span class="meta-item">
+              <i class="fa fa-calendar"></i> {{ post.project-date }}
+            </span>
+            <span class="meta-item">
+              <i class="fa fa-tag"></i> {{ post.category }}
+            </span>
+          </div>
+
+          <!-- Tab Navigation -->
+          <div class="project-tabs">
+            <button
+              class="tab-btn active"
+              onclick="switchProjectTab(this, 'overview')"
+            >
+              <i class="fa fa-info-circle"></i> 개요
+            </button>
+            <button class="tab-btn" onclick="switchProjectTab(this, 'tech')">
+              <i class="fa fa-code"></i> 기술 스택
+            </button>
+            {% if post.deployment-services %}
+            <button
+              class="tab-btn"
+              onclick="switchProjectTab(this, 'deployment')"
+            >
+              <i class="fa fa-cloud"></i> 배포
+            </button>
+            {% endif %}
+            <button class="tab-btn" onclick="switchProjectTab(this, 'links')">
+              <i class="fa fa-external-link"></i> 링크
+            </button>
+          </div>
+
+          <!-- Tab Contents -->
+          <div class="tab-content-container">
+            <!-- Overview Tab -->
+            <div class="tab-content active" data-tab="overview">
+              <div class="project-description">
+                {{ post.description | markdownify }}
               </div>
-              {% endif %} {% if post.deployment-services %}
-              <div class="deployment-section">
-                <h4>배포 서비스</h4>
-                <div class="deployment-services">
-                  {% for service in post.deployment-services %}
-                  <div class="deployment-item">{{ service }}</div>
-                  {% endfor %}
-                </div>
+            </div>
+
+            <!-- Tech Stack Tab -->
+            <div class="tab-content" data-tab="tech">
+              {% if post.tech-stack %}
+              <div class="modern-tech-stack">
+                {% for tech in post.tech-stack %}
+                <a
+                  href="#"
+                  class="tech-badge"
+                  data-tech="{{ tech | downcase }}"
+                  onclick="openTechSite('{{ tech | downcase }}'); return false;"
+                  >{{ tech }}</a
+                >
+                {% endfor %}
               </div>
+              {% else %}
+              <p class="empty-message">기술 스택 정보가 없습니다.</p>
               {% endif %}
             </div>
 
-            <ul class="list-inline item-details">
-              {% if post.project-url %}
-              <li>
-                사이트:
-                <strong
-                  ><a href="{{ post.project-url }}" target="_blank"
-                    >{{ post.title }} 방문하기</a
-                  ></strong
-                >
-              </li>
-              {% endif %} {% if post.github-url %}
-              <li>
-                GitHub:
-                <strong
-                  ><a href="{{ post.github-url }}" target="_blank"
-                    >소스 코드</a
-                  ></strong
-                >
-              </li>
-              {% endif %}
+            <!-- Deployment Tab -->
+            {% if post.deployment-services %}
+            <div class="tab-content" data-tab="deployment">
+              <div class="deployment-services">
+                {% for service in post.deployment-services %}
+                <div class="deployment-item">
+                  <i class="fa fa-server"></i> {{ service }}
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            {% endif %}
 
-              <li>
-                완료일:
-                <strong>{{ post.project-date }}</strong>
-              </li>
-
-              <li>
-                분류:
-                <strong>{{ post.category }}</strong>
-              </li>
-            </ul>
-            <button type="button" class="btn btn-default" data-dismiss="modal">
-              <i class="fa fa-times"></i> Close
-            </button>
+            <!-- Links Tab -->
+            <div class="tab-content" data-tab="links">
+              <div class="project-links-grid">
+                {% if post.project-url %}
+                <a
+                  href="{{ post.project-url }}"
+                  target="_blank"
+                  class="project-link-card"
+                >
+                  <div class="link-icon">
+                    <i class="fa fa-globe"></i>
+                  </div>
+                  <div class="link-info">
+                    <h5>사이트 방문</h5>
+                    <p>프로젝트 웹사이트를 확인하세요</p>
+                  </div>
+                  <i class="fa fa-arrow-right link-arrow"></i>
+                </a>
+                {% endif %} {% if post.github-url %}
+                <a
+                  href="{{ post.github-url }}"
+                  target="_blank"
+                  class="project-link-card"
+                >
+                  <div class="link-icon">
+                    <i class="fa fa-github"></i>
+                  </div>
+                  <div class="link-info">
+                    <h5>소스 코드</h5>
+                    <p>GitHub 레포지토리를 확인하세요</p>
+                  </div>
+                  <i class="fa fa-arrow-right link-arrow"></i>
+                </a>
+                {% endif %} {% unless post.project-url or post.github-url %}
+                <p class="empty-message">링크 정보가 없습니다.</p>
+                {% endunless %}
+              </div>
+            </div>
           </div>
         </div>
       </div>
