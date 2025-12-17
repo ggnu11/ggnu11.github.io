@@ -1513,49 +1513,76 @@
   border-radius: 2px 2px 0 0;
 }
 
-/* Language Toggle */
-.language-toggle {
-  display: flex;
-  gap: 6px;
-  background: #f1f5f9;
-  padding: 4px;
-  border-radius: 10px;
+/* Language Toggle - Modern Pill Segmented Control */
+.language-toggle-pill {
+  position: relative;
   flex-shrink: 0;
 }
 
-.lang-btn {
+.toggle-track {
+  position: relative;
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 20px;
+  padding: 4px;
+  height: 36px;
+  overflow: hidden;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 4px;
+  left: 2px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.toggle-thumb.moving-to-jp {
+  transform: translateX(calc(100% + 4px));
+}
+
+.toggle-option {
+  position: relative;
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
+  justify-content: center;
   background: transparent;
   border: none;
-  border-radius: 8px;
+  border-radius: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 14px;
-  font-weight: 600;
-  color: #64748b;
+  transition: color 0.25s ease;
+  z-index: 2;
+  min-width: 44px;
+  padding: 0 12px;
 }
 
-.lang-btn .flag {
-  font-size: 18px;
-}
-
-.lang-btn .lang-code {
-  font-size: 12px;
+.toggle-option .lang-code {
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.05em;
+  color: #64748b;
+  transition: color 0.25s ease;
 }
 
-.lang-btn:hover {
-  background: #e2e8f0;
+.toggle-option.active .lang-code {
+  color: #1e293b;
 }
 
-.lang-btn.active {
-  background: #ffffff;
-  color: #3b82f6;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.toggle-option:hover:not(.active) .lang-code {
+  color: #475569;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .toggle-thumb {
+    transition: none;
+  }
 }
 
 /* Responsive Design */

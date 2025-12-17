@@ -453,9 +453,10 @@ $(document).ready(function () {
   });
 });
 
-// Language Toggle with Theme Change
+// Language Toggle with Theme Change - Modern Pill Design
 $(document).ready(function () {
   var currentLang = "ko"; // Default language
+  var isTransitioning = false; // Prevent spam clicks
 
   // Theme colors
   var themes = {
@@ -473,70 +474,33 @@ $(document).ready(function () {
     },
   };
 
-  // Function to show language transition animation
-  function showLanguageAnimation(fromLang, toLang) {
-    var $overlay = $('<div class="language-transition-overlay"></div>');
-    $("body").append($overlay);
-
-    // 한국 → 일본: 일본의 특징을 담은 애니메이션
-    if (fromLang === "ko" && toLang === "jp") {
-      $overlay.addClass("transition-ko-to-jp");
-
-      // 붉은 태양 생성 (일본 국기의 상징)
-      var $sun = $('<div class="japanese-sun"></div>');
-      $overlay.append($sun);
-
-      // 일본 전통 문양 (세이카이 패턴) 생성
-      for (var i = 0; i < 6; i++) {
-        var $pattern = $('<div class="japanese-pattern"></div>');
-        var angle = i * 60;
-        var distance = 150 + Math.random() * 100;
-        $pattern.css({
-          transform: "rotate(" + angle + "deg) translateX(" + distance + "px)",
-          animationDelay: i * 0.1 + "s",
-        });
-        $overlay.append($pattern);
-      }
-    }
-    // 일본 → 한국: 태극기 패턴 애니메이션
-    else if (fromLang === "jp" && toLang === "ko") {
-      $overlay.addClass("transition-jp-to-ko");
-      // 태극 패턴 생성
-      var $taegeuk = $('<div class="taegeuk-pattern"></div>');
-      $overlay.append($taegeuk);
-      // 한국 전통 패턴 효과
-      for (var i = 0; i < 8; i++) {
-        var $wave = $('<div class="korean-wave"></div>');
-        var angle = i * 45;
-        $wave.css({
-          transform: "rotate(" + angle + "deg)",
-          animationDelay: i * 0.1 + "s",
-        });
-        $overlay.append($wave);
-      }
-    }
-
-    // 애니메이션 후 제거
-    var animationDuration = fromLang === "ko" && toLang === "jp" ? 2000 : 1500;
-    setTimeout(function () {
-      $overlay.fadeOut(300, function () {
-        $(this).remove();
-      });
-    }, animationDuration);
-  }
-
   // Function to change language
   function changeLanguage(lang) {
-    // Don't change if already in this language
-    if (currentLang === lang) {
+    // Don't change if already in this language or transitioning
+    if (currentLang === lang || isTransitioning) {
       return;
     }
 
-    // Show transition animation
-    showLanguageAnimation(currentLang, lang);
-
+    isTransitioning = true;
     currentLang = lang;
     var dataAttr = "data-" + lang;
+
+    // Update thumb position
+    var $thumb = $("#toggleThumb");
+    if (lang === "jp") {
+      $thumb.addClass("moving-to-jp");
+    } else {
+      $thumb.removeClass("moving-to-jp");
+    }
+
+    // Update button states
+    $(".toggle-option").removeClass("active");
+    $('.toggle-option[data-lang="' + lang + '"]').addClass("active");
+
+    // Reset transition flag after animation
+    setTimeout(function () {
+      isTransitioning = false;
+    }, 400);
 
     // Get all elements with data-ko and data-jp, sorted by depth (deepest first)
     var $allElements = $("[data-ko][data-jp]");
@@ -601,10 +565,6 @@ $(document).ready(function () {
     // Change theme
     changeTheme(lang);
 
-    // Update language button states
-    $(".lang-btn").removeClass("active");
-    $('.lang-btn[data-lang="' + lang + '"]').addClass("active");
-
     // Store preference
     localStorage.setItem("preferred-lang", lang);
   }
@@ -637,11 +597,10 @@ $(document).ready(function () {
     }
   }
 
-  // Language button click handler - 이벤트 위임 방식으로 안정적으로 처리
-  // 이벤트 위임 방식으로 바인딩 (동적으로 추가된 요소도 처리 가능)
+  // Language button click handler
   $(document)
-    .off("click.languageToggle", ".lang-btn")
-    .on("click.languageToggle", ".lang-btn", function (e) {
+    .off("click.languageToggle", ".toggle-option")
+    .on("click.languageToggle", ".toggle-option", function (e) {
       e.preventDefault();
       e.stopPropagation();
 
@@ -663,10 +622,69 @@ $(document).ready(function () {
   // Load saved language preference
   var savedLang = localStorage.getItem("preferred-lang");
   if (savedLang && (savedLang === "ko" || savedLang === "jp")) {
-    changeLanguage(savedLang);
+    currentLang = savedLang;
+    // Update UI without animation on initial load
+    var $thumb = $("#toggleThumb");
+    if (savedLang === "jp") {
+      $thumb.addClass("moving-to-jp");
+    }
+    $(".toggle-option").removeClass("active");
+    $('.toggle-option[data-lang="' + savedLang + '"]').addClass("active");
+    changeTheme(savedLang);
+
+    // Update text content
+    var dataAttr = "data-" + savedLang;
+    var $allElements = $("[data-ko][data-jp]");
+    var elementsArray = $allElements.toArray();
+
+    elementsArray.sort(function (a, b) {
+      var depthA = $(a).parents("[data-ko][data-jp]").length;
+      var depthB = $(b).parents("[data-ko][data-jp]").length;
+      return depthB - depthA;
+    });
+
+    $(elementsArray).each(function () {
+      var $elem = $(this);
+      var newText = $elem.attr(dataAttr);
+
+      if (newText) {
+        var $directChildrenWithData = $elem.children("[data-ko][data-jp]");
+
+        if ($directChildrenWithData.length === 0) {
+          var $icons = $elem.find("i");
+          var iconHTML = "";
+          if ($icons.length > 0) {
+            iconHTML = $icons
+              .map(function () {
+                return this.outerHTML;
+              })
+              .get()
+              .join(" ");
+          }
+
+          if (iconHTML) {
+            var $directIcons = $elem.children("i");
+            if ($directIcons.length > 0) {
+              $elem.html(iconHTML + " " + newText);
+            } else {
+              $elem.html(iconHTML + " " + newText);
+            }
+          } else {
+            $elem.text(newText);
+          }
+        }
+      }
+
+      var titleAttr = dataAttr + "-title";
+      var newTitle = $elem.attr(titleAttr);
+      if (newTitle) {
+        $elem.attr("title", newTitle);
+      }
+    });
   } else {
     // Ensure default language button is active
-    $('.lang-btn[data-lang="ko"]').addClass("active");
+    $(".toggle-option").removeClass("active");
+    $('.toggle-option[data-lang="ko"]').addClass("active");
   }
 });
 

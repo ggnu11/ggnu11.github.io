@@ -49,16 +49,17 @@
         </li>
       </ul>
 
-      <!-- Language Toggle -->
-      <div class="language-toggle">
-        <button type="button" class="lang-btn active" data-lang="ko">
-          <span class="flag">🇰🇷</span>
-          <span class="lang-code">KR</span>
-        </button>
-        <button type="button" class="lang-btn" data-lang="jp">
-          <span class="flag">🇯🇵</span>
-          <span class="lang-code">JP</span>
-        </button>
+      <!-- Language Toggle - Modern Pill Segmented Control -->
+      <div class="language-toggle-pill" id="languageToggle">
+        <div class="toggle-track">
+          <div class="toggle-thumb" id="toggleThumb"></div>
+          <button type="button" class="toggle-option active" data-lang="ko" id="langKo">
+            <span class="lang-code">KR</span>
+          </button>
+          <button type="button" class="toggle-option" data-lang="jp" id="langJp">
+            <span class="lang-code">JP</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
