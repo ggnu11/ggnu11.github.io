@@ -474,6 +474,11 @@ $(document).ready(function () {
     },
   };
 
+  // Check if user prefers reduced motion
+  function prefersReducedMotion() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
   // Function to change language
   function changeLanguage(lang) {
     // Don't change if already in this language or transitioning
@@ -484,6 +489,7 @@ $(document).ready(function () {
     isTransitioning = true;
     currentLang = lang;
     var dataAttr = "data-" + lang;
+    var shouldAnimate = !prefersReducedMotion();
 
     // Update thumb position
     var $thumb = $("#toggleThumb");
@@ -497,11 +503,6 @@ $(document).ready(function () {
     $(".toggle-option").removeClass("active");
     $('.toggle-option[data-lang="' + lang + '"]').addClass("active");
 
-    // Reset transition flag after animation
-    setTimeout(function () {
-      isTransitioning = false;
-    }, 400);
-
     // Get all elements with data-ko and data-jp, sorted by depth (deepest first)
     var $allElements = $("[data-ko][data-jp]");
     var elementsArray = $allElements.toArray();
@@ -512,6 +513,49 @@ $(document).ready(function () {
       var depthB = $(b).parents("[data-ko][data-jp]").length;
       return depthB - depthA;
     });
+
+    // Function to update element text with animation
+    function updateElementText($elem, newText, iconHTML) {
+      if (shouldAnimate) {
+        // Add slide-out animation
+        $elem.addClass("lang-text-out");
+
+        // Wait for slide-out, then update text and slide-in
+        setTimeout(function () {
+          // Update content
+          if (iconHTML) {
+            var $directIcons = $elem.children("i");
+            if ($directIcons.length > 0) {
+              $elem.html(iconHTML + " " + newText);
+            } else {
+              $elem.html(iconHTML + " " + newText);
+            }
+          } else {
+            $elem.text(newText);
+          }
+
+          // Remove slide-out and add slide-in
+          $elem.removeClass("lang-text-out").addClass("lang-text-in");
+
+          // Clean up animation class after completion
+          setTimeout(function () {
+            $elem.removeClass("lang-text-in");
+          }, 300);
+        }, 250);
+      } else {
+        // No animation - instant update
+        if (iconHTML) {
+          var $directIcons = $elem.children("i");
+          if ($directIcons.length > 0) {
+            $elem.html(iconHTML + " " + newText);
+          } else {
+            $elem.html(iconHTML + " " + newText);
+          }
+        } else {
+          $elem.text(newText);
+        }
+      }
+    }
 
     // Update each element
     $(elementsArray).each(function () {
@@ -536,20 +580,7 @@ $(document).ready(function () {
               .join(" ");
           }
 
-          if (iconHTML) {
-            // Check if icons are direct children
-            var $directIcons = $elem.children("i");
-            if ($directIcons.length > 0) {
-              // Icons are direct children, preserve them
-              $elem.html(iconHTML + " " + newText);
-            } else {
-              // Icons are nested, try to preserve structure
-              $elem.html(iconHTML + " " + newText);
-            }
-          } else {
-            // No icons, just update text
-            $elem.text(newText);
-          }
+          updateElementText($elem, newText, iconHTML);
         }
         // If element has children with data attributes, they will be updated separately
       }
@@ -567,6 +598,11 @@ $(document).ready(function () {
 
     // Store preference
     localStorage.setItem("preferred-lang", lang);
+
+    // Reset transition flag after all animations complete
+    setTimeout(function () {
+      isTransitioning = false;
+    }, shouldAnimate ? 600 : 400);
   }
 
   // Function to change theme
