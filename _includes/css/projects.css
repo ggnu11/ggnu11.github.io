@@ -390,7 +390,7 @@
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  max-height: 85vh;
+  height: 850px;
   display: flex;
   flex-direction: column;
   border: none;
@@ -849,7 +849,7 @@
   }
 
   .portfolio-modal .modal-content {
-    max-height: 90vh;
+    height: 500px;
     border-radius: 16px;
   }
 
@@ -951,7 +951,7 @@
 
   .portfolio-modal .modal-content {
     border-radius: 12px;
-    max-height: 95vh;
+    height: 500px;
   }
 
   .portfolio-modal .modal-header {
