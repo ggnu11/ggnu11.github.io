@@ -1139,4 +1139,19 @@ $(document).ready(function () {
     $experienceModal.removeClass("active");
     $("body").css("overflow", "");
   }
+
+  // 이력서 다운로드 버튼 클릭 핸들러
+  $(".resume-download-btn").on("click", function(e) {
+    e.preventDefault();
+    var resumeUrl = $(this).attr("href");
+    var fileName = $(this).attr("download") || "ChoiYoungHun_Frontend_Engineer_Resume.pdf";
+    
+    // 새 링크 요소를 생성하여 다운로드 강제
+    var link = document.createElement("a");
+    link.href = resumeUrl;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
 });

@@ -802,9 +802,11 @@
 }
 
 .link-icon i {
-  color: white;
+  color: white !important;
   font-size: 24px;
   z-index: 1;
+  display: inline-block;
+  line-height: 1;
 }
 
 .link-info {
