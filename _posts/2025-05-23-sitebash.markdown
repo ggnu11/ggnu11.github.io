@@ -10,7 +10,7 @@ alt: SiteDash 웹 앱 화면
 project-date: 2025년 5월
 category: 웹 애플리케이션
 project-url: https://ggnu11.github.io/site-dash/
-description: SiteDash는 여러 프로젝트를 한눈에 관리할 수 있는 대시보드 웹 애플리케이션입니다. 프로젝트별로 메인 URL과 서브메뉴를 등록하고 관리할 수 있으며, 직관적인 UI와 부드러운 애니메이션으로 사용자 경험을 향상시켰습니다. Framer Motion을 활용한 인터랙티브한 UI와 FSD(Feature-Sliced Design) 아키텍처를 적용하여 확장성과 유지보수성을 높였습니다. Vercel을 통한 자동 배포 파이프라인을 구축하여 지속적인 배포가 가능합니다.
+description: SiteDash는 여러 프로젝트를 한눈에 관리할 수 있는 대시보드 웹 애플리케이션입니다. Google OAuth 2.0을 통한 간편한 로그인과 함께, 프로젝트별로 메인 URL과 서브메뉴를 등록하고 관리할 수 있습니다. Framer Motion을 활용한 인터랙티브한 UI와 FSD(Feature-Sliced Design) 아키텍처를 적용하여 확장성과 유지보수성을 높였습니다. 프론트엔드는 GitHub Pages로, 백엔드는 Railway로 배포하여 풀스택 애플리케이션으로 구현했습니다. Supabase를 데이터베이스로 사용하여 실시간 데이터 관리와 안전한 인증 시스템을 구축했습니다.
 tech-stack:
   - React 19
   - TypeScript
@@ -22,4 +22,14 @@ tech-stack:
   - Zod
   - Radix UI
   - Embla Carousel
+  - Sonner
+  - React Router
+  - Node.js
+  - Express
+  - Supabase
+  - Passport.js
+  - Google OAuth 2.0
+  - JWT
+  - Railway
+  - GitHub Pages
 ---
