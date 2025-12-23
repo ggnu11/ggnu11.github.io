@@ -160,23 +160,90 @@
           </div>
         </div>
 
-        <!-- Birthday Card -->
-        <div class="info-card birthday-card">
+        <!-- External Activities Card -->
+        <div class="info-card activities-card">
           <div class="info-card-header">
-            <i class="fas fa-birthday-cake"></i>
-            <h4 data-ko="생년월일" data-jp="生年月日">생년월일</h4>
+            <i class="fas fa-users"></i>
+            <h4 data-ko="대외 활동" data-jp="外部活動">대외 활동</h4>
           </div>
           <div class="info-card-content">
-            <div class="birthday-calendar">
-              <div class="calendar-month">
-                <span class="month-name" data-ko="7월" data-jp="7月">7월</span>
-                <span class="year-name">1996</span>
-              </div>
-              <div class="calendar-day">
-                <span class="day-number">12</span>
-                <span class="day-label" data-ko="금" data-jp="金">금</span>
+            <div
+              class="activity-item"
+              data-activity="mentor"
+              data-icon="fas fa-user-graduate"
+              data-title-ko="서울 사이버대학교"
+              data-title-jp="ソウルサイバー大学"
+              data-subtitle-ko="재학생 대상 멘토·멘티 활동"
+              data-subtitle-jp="在学生対象メンター・メンティー活動"
+            >
+              <div class="activity-main">
+                <div class="activity-icon">
+                  <i class="fas fa-user-graduate"></i>
+                </div>
+                <div class="activity-details">
+                  <h5 data-ko="서울 사이버대학교" data-jp="ソウルサイバー大学">
+                    서울 사이버대학교
+                  </h5>
+                  <p
+                    data-ko="재학생 대상 멘토·멘티 활동"
+                    data-jp="在学生対象メンター・メンティー活動"
+                  >
+                    재학생 대상 멘토·멘티 활동
+                  </p>
+                </div>
+                <div class="activity-info-icon">
+                  <i class="fas fa-info-circle"></i>
+                </div>
               </div>
             </div>
+            <div
+              class="activity-item"
+              data-activity="kosmo"
+              data-icon="fas fa-code"
+              data-title-ko="한국 소프트웨어 인재 개발원"
+              data-title-jp="韓国ソフトウェア人材開発院"
+              data-subtitle-ko="JAVA 개발자 양성과정 수료"
+              data-subtitle-jp="JAVA開発者養成課程修了"
+            >
+              <div class="activity-main">
+                <div class="activity-icon">
+                  <i class="fas fa-code"></i>
+                </div>
+                <div class="activity-details">
+                  <h5
+                    data-ko="한국 소프트웨어 인재 개발원"
+                    data-jp="韓国ソフトウェア人材開発院"
+                  >
+                    한국 소프트웨어 인재 개발원
+                  </h5>
+                  <p
+                    data-ko="JAVA 개발자 양성과정 수료"
+                    data-jp="JAVA開発者養成課程修了"
+                  >
+                    JAVA 개발자 양성과정 수료
+                  </p>
+                </div>
+                <div class="activity-info-icon">
+                  <i class="fas fa-info-circle"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity Detail Overlay -->
+        <div class="activity-overlay" id="activityOverlay">
+          <div class="activity-overlay-backdrop"></div>
+          <div class="activity-overlay-content">
+            <button class="activity-overlay-close">
+              <i class="fas fa-times"></i>
+            </button>
+            <div class="activity-overlay-header">
+              <div class="activity-overlay-icon"></div>
+              <div class="activity-overlay-title"></div>
+            </div>
+            <div class="activity-overlay-badges"></div>
+            <div class="activity-overlay-description"></div>
           </div>
         </div>
 
@@ -187,35 +254,58 @@
             <h4 data-ko="언어 & 자격증" data-jp="言語 & 資格">언어 & 자격증</h4>
           </div>
           <div class="info-card-content">
-            <div class="skill-tags">
-              <span class="skill-tag cert">
-                <i class="fas fa-certificate"></i>
-                <span
-                  data-ko="정보처리기사 (2023)"
-                  data-jp="情報処理技術者 (2023)"
-                  >정보처리기사 (2025)</span
-                >
-              </span>
-              <span class="skill-tag cert">
-                <i class="fas fa-car"></i>
-                <span
-                  data-ko="1종 운전면허 보통 (2016)"
-                  data-jp="第1種運転免許 普通 (2016)"
-                  >1종 운전면허 보통 (2016)</span
-                >
-              </span>
-              <span class="skill-tag cert">
-                <i class="fas fa-language"></i>
-                <span data-ko="JLPT N2 (2022)" data-jp="JLPT N2 (2022)"
-                  >JLPT N2 (2022)</span
-                >
-              </span>
-              <span class="skill-tag cert">
-                <i class="fas fa-language"></i>
-                <span data-ko="JLPT N3 (2021)" data-jp="JLPT N3 (2021)"
-                  >JLPT N3 (2021)</span
-                >
-              </span>
+            <!-- Languages Section -->
+            <div class="languages-section">
+              <h5 class="section-subtitle" data-ko="언어" data-jp="言語">
+                언어
+              </h5>
+              <div class="skill-tags scrollable-tags">
+                <span class="skill-tag lang">
+                  <i class="fas fa-globe"></i>
+                  <span
+                    data-ko="일본어 일상회화 가능"
+                    data-jp="日本語日常会話可能"
+                  >
+                    일본어
+                  </span>
+                </span>
+              </div>
+            </div>
+            <!-- Certifications Section -->
+            <div class="certifications-section">
+              <h5 class="section-subtitle" data-ko="자격증" data-jp="資格">
+                자격증
+              </h5>
+              <div class="skill-tags scrollable-tags">
+                <span class="skill-tag cert">
+                  <i class="fas fa-certificate"></i>
+                  <span
+                    data-ko="정보처리기사 (2025.09)"
+                    data-jp="情報処理技術者 (2025.09)"
+                    >정보처리기사 (2025.09)</span
+                  >
+                </span>
+                <span class="skill-tag cert">
+                  <i class="fas fa-database"></i>
+                  <span
+                    data-ko="SQL 개발자 (2025.06)"
+                    data-jp="SQL開発者 (2025.06)"
+                    >SQL 개발자 (2025.06)</span
+                  >
+                </span>
+                <span class="skill-tag cert">
+                  <i class="fas fa-language"></i>
+                  <span data-ko="JLPT N2 (2022.01)" data-jp="JLPT N2 (2022.01)"
+                    >JLPT N2 (2022.01)</span
+                  >
+                </span>
+                <span class="skill-tag cert">
+                  <i class="fas fa-language"></i>
+                  <span data-ko="JLPT N3 (2021.08)" data-jp="JLPT N3 (2021.08)"
+                    >JLPT N3 (2021.08)</span
+                  >
+                </span>
+              </div>
             </div>
           </div>
         </div>
