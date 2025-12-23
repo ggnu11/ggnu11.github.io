@@ -458,6 +458,21 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* 언어 변경 시 마커 레이블 위치 고정 */
+.marker-label.lang-text-out,
+.marker-label.lang-text-in {
+  animation: none !important;
+  transition: opacity 0.15s ease;
+}
+
+.marker-label.lang-text-out {
+  opacity: 0.5;
+}
+
+.marker-label.lang-text-in {
+  opacity: 1;
+}
+
 .location-marker:hover .marker-label {
   transform: translateX(-50%) translateY(-2px);
   background: rgba(255, 255, 255, 1);
