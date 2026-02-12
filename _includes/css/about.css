@@ -329,6 +329,77 @@
   font-weight: 400;
 }
 
+/* Resume Section - Language Toggle + Download Button */
+.resume-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.resume-language-toggle {
+  position: relative;
+  display: inline-flex;
+  background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
+  border-radius: 16px;
+  padding: 6px;
+  gap: 0;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.08),
+              0 1px 2px rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(50% - 6px);
+  height: calc(100% - 12px);
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2),
+              0 2px 4px rgba(0, 0, 0, 0.1),
+              inset 0 -1px 2px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.resume-lang-btn {
+  position: relative;
+  padding: 10px 24px;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  z-index: 2;
+  letter-spacing: 0.02em;
+  min-width: 80px;
+}
+
+.resume-lang-btn:hover {
+  color: #475569;
+}
+
+.resume-lang-btn.active {
+  color: #1e293b;
+}
+
+.resume-lang-btn span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.resume-lang-btn.active span {
+  transform: scale(1.05);
+}
+
 .resume-download-btn {
   display: inline-flex;
   align-items: center;
@@ -2006,6 +2077,32 @@
 
   .hero-description {
     font-size: 16px;
+  }
+
+  .resume-section {
+    gap: 20px;
+  }
+
+  .resume-language-toggle {
+    padding: 5px;
+  }
+
+  .toggle-slider {
+    top: 5px;
+    left: 5px;
+    width: calc(50% - 5px);
+    height: calc(100% - 10px);
+  }
+
+  .resume-lang-btn {
+    padding: 8px 20px;
+    font-size: 13px;
+    min-width: 70px;
+  }
+
+  .resume-download-btn {
+    padding: 12px 28px;
+    font-size: 15px;
   }
 
   .tab-nav-list {

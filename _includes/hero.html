@@ -26,16 +26,72 @@
         React를 중심으로 웹 프론트엔드를 개발합니다. 함께 제품을 만들고 성장시킬
         곳을 찾고 있습니다.
       </p>
-      <a
-        href="img/ChoiYoungHun_Frontend_Engineer_Resume.pdf"
-        class="resume-download-btn"
-        download="ChoiYoungHun_Frontend_Engineer_Resume.pdf"
-      >
-        <span data-ko="이력서 다운로드" data-jp="履歴書をダウンロード"
-          >이력서 다운로드</span
+      <div class="resume-section">
+        <!-- 언어 선택 토글 - iOS 스타일 -->
+        <div class="resume-language-toggle">
+          <div class="toggle-slider"></div>
+          <button type="button" class="resume-lang-btn active" data-lang="ko">
+            <span data-ko="한국어" data-jp="韓国語">한국어</span>
+          </button>
+          <button type="button" class="resume-lang-btn" data-lang="jp">
+            <span data-ko="일본어" data-jp="日本語">일본어</span>
+          </button>
+        </div>
+
+        <!-- 다운로드 버튼 -->
+        <a
+          href="img/ChoiYoungHun_Frontend_Engineer_Resume.pdf"
+          class="resume-download-btn"
+          download="ChoiYoungHun_Frontend_Engineer_Resume.pdf"
+          id="resumeDownloadBtn"
         >
-        <i class="fa fa-download" aria-hidden="true"></i>
-      </a>
+          <span data-ko="이력서 다운로드" data-jp="履歴書をダウンロード"
+            >이력서 다운로드</span
+          >
+          <i class="fa fa-download" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <!-- 이력서 언어 전환 스크립트 -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const langButtons = document.querySelectorAll('.resume-lang-btn');
+          const downloadBtn = document.getElementById('resumeDownloadBtn');
+          const toggleSlider = document.querySelector('.toggle-slider');
+
+          const resumeFiles = {
+            ko: {
+              path: 'img/ChoiYoungHun_Frontend_Engineer_Resume.pdf',
+              filename: 'ChoiYoungHun_Frontend_Engineer_Resume.pdf'
+            },
+            jp: {
+              path: 'img/チェヨンフン_履歴書.pdf',
+              filename: 'チェヨンフン_履歴書.pdf'
+            }
+          };
+
+          langButtons.forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+              const selectedLang = this.getAttribute('data-lang');
+
+              // 활성 상태 변경
+              langButtons.forEach(b => b.classList.remove('active'));
+              this.classList.add('active');
+
+              // 슬라이더 이동
+              if (selectedLang === 'jp') {
+                toggleSlider.style.transform = 'translateX(100%)';
+              } else {
+                toggleSlider.style.transform = 'translateX(0)';
+              }
+
+              // 다운로드 링크 변경
+              downloadBtn.href = resumeFiles[selectedLang].path;
+              downloadBtn.setAttribute('download', resumeFiles[selectedLang].filename);
+            });
+          });
+        });
+      </script>
     </div>
   </div>
 </section>
