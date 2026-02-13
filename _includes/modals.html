@@ -41,10 +41,10 @@
           </div>
           {% if post.images.size > 1 %}
           <button class="carousel-btn prev" onclick="moveCarousel(this, -1)">
-            <i class="fa fa-chevron-left"></i>
+            <i class="fas fa-chevron-left"></i>
           </button>
           <button class="carousel-btn next" onclick="moveCarousel(this, 1)">
-            <i class="fa fa-chevron-right"></i>
+            <i class="fas fa-chevron-right"></i>
           </button>
           <div class="carousel-indicators">
             {% for image in post.images %}
@@ -72,10 +72,10 @@
           <!-- Project Meta -->
           <div class="project-meta">
             <span class="meta-item">
-              <i class="fa fa-calendar"></i> {{ post.project-date }}
+              <i class="fas fa-calendar-alt"></i> {{ post.project-date }}
             </span>
             <span class="meta-item">
-              <i class="fa fa-tag"></i> {{ post.category }}
+              <i class="fas fa-tag"></i> {{ post.category }}
             </span>
           </div>
 
@@ -85,21 +85,21 @@
               class="tab-btn active"
               onclick="switchProjectTab(this, 'overview')"
             >
-              <i class="fa fa-info-circle"></i> 개요
+              <i class="fas fa-info-circle"></i> 개요
             </button>
             <button class="tab-btn" onclick="switchProjectTab(this, 'tech')">
-              <i class="fa fa-code"></i> 기술 스택
+              <i class="fas fa-code"></i> 기술 스택
             </button>
             {% if post.deployment-services %}
             <button
               class="tab-btn"
               onclick="switchProjectTab(this, 'deployment')"
             >
-              <i class="fa fa-cloud"></i> 배포
+              <i class="fas fa-cloud"></i> 배포
             </button>
             {% endif %}
             <button class="tab-btn" onclick="switchProjectTab(this, 'links')">
-              <i class="fa fa-external-link"></i> 링크
+              <i class="fas fa-link"></i> 링크
             </button>
           </div>
 
@@ -137,7 +137,7 @@
               <div class="deployment-services">
                 {% for service in post.deployment-services %}
                 <div class="deployment-item">
-                  <i class="fa fa-server"></i> {{ service }}
+                  <i class="fas fa-server"></i> {{ service }}
                 </div>
                 {% endfor %}
               </div>
@@ -154,13 +154,13 @@
                   class="project-link-card"
                 >
                   <div class="link-icon">
-                    <i class="fa fa-external-link"></i>
+                    <i class="fas fa-globe"></i>
                   </div>
                   <div class="link-info">
                     <h5>사이트 방문</h5>
                     <p>프로젝트 웹사이트를 확인하세요</p>
                   </div>
-                  <i class="fa fa-arrow-right link-arrow"></i>
+                  <i class="fas fa-arrow-right link-arrow"></i>
                 </a>
                 {% endif %} {% if post.github-url %}
                 <a
@@ -169,13 +169,13 @@
                   class="project-link-card"
                 >
                   <div class="link-icon">
-                    <i class="fa fa-github"></i>
+                    <i class="fab fa-github"></i>
                   </div>
                   <div class="link-info">
                     <h5>소스 코드</h5>
                     <p>GitHub 레포지토리를 확인하세요</p>
                   </div>
-                  <i class="fa fa-arrow-right link-arrow"></i>
+                  <i class="fas fa-arrow-right link-arrow"></i>
                 </a>
                 {% endif %} {% unless post.project-url or post.github-url %}
                 <p class="empty-message">링크 정보가 없습니다.</p>
